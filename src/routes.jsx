@@ -6,7 +6,7 @@ import {Route, Switch} from 'react-router-dom';
 import App from './components/App';
 import Landing from './components/landing/Lading';
 import Profile  from './components/profile/Profile';
-import Form  from './components/loginSingin/Form';
+import Form  from './components/form/Form';
 import Page404 from './components/Page404';
 
 const AppRouters = () => 
