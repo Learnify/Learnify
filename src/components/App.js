@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import Header from "./Global/Header";
 import Footer from "./Global/Footer";
 import Content from "./Global/Content";
+import NavBar from "./landing/Navbar.jsx";
 
 //Data
 import "../styles/App.css";
@@ -18,7 +19,7 @@ class App extends Component {
     const { children } = this.props;
     return (
       <div className="App">
-        <Header />
+        <NavBar />
         <Content body={children} />
         <Footer />
       </div>
