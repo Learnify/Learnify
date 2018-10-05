@@ -74,14 +74,14 @@ class NavBar extends Component {
                   <NavItem>
                     <NavLink className="auth-button">
                       <Button color="info" outline>
-                        <Link to={'/Authentication/LogIn'}>LogIn</Link>
+                        <Link to={'/LogIn'}>LogIn</Link>
                       </Button>
                     </NavLink>
                   </NavItem>
                   <NavItem>
                     <NavLink className="auth-button">
                       <Button color="info" outline>
-                        <Link to = {'/Authentication/SingIn'}> Sign Up </Link>
+                        <Link to = {'/SingIn'}> Sign Up </Link>
                       </Button>
                     </NavLink>
                   </NavItem>

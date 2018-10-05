@@ -18,8 +18,8 @@ const AppRouters = () =>
         <Switch>
             {/* <Route exact path='/Profile' component={Profile}/> */}
             <Route exact path='/Authentication' component={Authentication}/>
-            <Route exact path='/Authentication/SingIn' component={SignInForm}/>
-            <Route exact path='/Authentication/LogIn' component={SignUpForm}/>
+            <Route exact path='/LogIn' component={SignInForm}/>
+            <Route exact path='/SingIn' component={SignUpForm}/>
             <Route exact path='/Contact' component={Contact}/>
             <Route exact path='/Blog' component={Blog}/>
             <Route exact path='/' component={Landing}/>
