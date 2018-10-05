@@ -15,7 +15,9 @@ import {
   DropdownItem,
   FormGroup
 } from "reactstrap";
-import "../../styles/landing/navbar.css";
+
+import { Link } from 'react-router-dom';
+import "./navbar.css";
 
 class NavBar extends Component {
   constructor(props) {
@@ -39,8 +41,8 @@ class NavBar extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-3 col-3" align="left">
-              <NavbarBrand className="learnify-navbar all" href="/">
-                Learnify
+              <NavbarBrand className="learnify-navbar all">
+                <Link to={'/'}>Learnify</Link>
               </NavbarBrand>
             </div>
             <div className="col-sm-6 col-6">
@@ -58,28 +60,28 @@ class NavBar extends Component {
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto navbar-inverse" navbar>
                   <NavItem>
-                    <NavLink className="all" href="/components/">
-                      Contact
+                    <NavLink className="all">
+                      <Link to={'/Contact'}>Contact</Link>
                     </NavLink>
                   </NavItem>
                   <NavItem>
                     <div className="navbar-blog">
-                      <NavLink className="all" href="/components/">
-                        Blog
+                      <NavLink className="all">
+                        <Link to={'/Blog'}>Blog</Link>
                       </NavLink>
                     </div>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="/components/" className="auth-button">
+                    <NavLink className="auth-button">
                       <Button color="info" outline>
-                        Login
+                        <Link to={'/Authentication/LogIn'}>LogIn</Link>
                       </Button>
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="/components/" className="auth-button">
+                    <NavLink className="auth-button">
                       <Button color="info" outline>
-                        Sign Up
+                        <Link to = {'/Authentication/SingIn'}> Sign Up </Link>
                       </Button>
                     </NavLink>
                   </NavItem>

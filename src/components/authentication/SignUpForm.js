@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+// import Authentication from "./authentication.css";
+
 class SignUpForm extends Component {
   constructor() {
     super();

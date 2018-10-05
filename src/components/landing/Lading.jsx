@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NavBar from "./Navbar.jsx";
+// import NavBar from "./Navbar.jsx";
 
 class Landing extends Component {
   render() {

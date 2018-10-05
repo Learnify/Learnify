@@ -3,11 +3,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 //Components
-import Header from "./Global/Header";
-import Footer from "./Global/Footer";
-import Content from "./Global/Content";
+// import Header from "./Global/Header";
+import Footer from "./global/Footer";
+import Content from "./global/Content";
 import NavBar from "./landing/Navbar.jsx";
-import Authentication from "./authentication/authentication.js";
+// import Authentication from "./authentication/authentication.js";
 
 //Data
 import "../styles/App.css";
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <Authentication />
+        {/* <Authentication /> */}
         <Content body={children} />
         <Footer />
       </div>
