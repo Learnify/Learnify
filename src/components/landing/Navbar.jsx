@@ -38,12 +38,12 @@ class NavBar extends Component {
       <Navbar light expand="md">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-2" align="left">
+            <div className="col-sm-3 col-3" align="left">
               <NavbarBrand className="learnify-navbar all" href="/">
                 Learnify
               </NavbarBrand>
             </div>
-            <div className="col-lg-6">
+            <div className="col-sm-6 col-6">
               <FormGroup className="search-container w-100 md-0 active-cyan-3 active-cyan-4">
                 <Input
                   type="search"
@@ -53,8 +53,8 @@ class NavBar extends Component {
                 />
               </FormGroup>
             </div>
-            <div className="col-lg-4">
-              <NavbarToggler onClick={this.toggle} />
+            <div className="col-sm-3 col-3">
+              <NavbarToggler className="mr2" onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto navbar-inverse" navbar>
                   <NavItem>
