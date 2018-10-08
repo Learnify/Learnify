@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 //Components
 // import Header from "./Global/Header";
-import Footer from "./global/Footer";
-import Content from "./global/Content";
+import Footer from "./Global/Footer";
+import Content from "./Global/Content";
 import NavBar from "./landing/Navbar.jsx";
 // import Authentication from "./authentication/authentication.js";
 

@@ -16,7 +16,7 @@ import {
   FormGroup
 } from "reactstrap";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "./navbar.css";
 
 class NavBar extends Component {
@@ -42,7 +42,7 @@ class NavBar extends Component {
           <div className="row">
             <div className="col-sm-3 col-3" align="left">
               <NavbarBrand className="learnify-navbar all">
-                <Link to={'/'}>Learnify</Link>
+                <Link to={"/"}>Learnify</Link>
               </NavbarBrand>
             </div>
             <div className="col-sm-6 col-6">
@@ -61,27 +61,27 @@ class NavBar extends Component {
                 <Nav className="ml-auto navbar-inverse" navbar>
                   <NavItem>
                     <NavLink className="all">
-                      <Link to={'/Contact'}>Contact</Link>
+                      <Link to={"/Contact"}>Contact</Link>
                     </NavLink>
                   </NavItem>
                   <NavItem>
                     <div className="navbar-blog">
                       <NavLink className="all">
-                        <Link to={'/Blog'}>Blog</Link>
+                        <Link to={"/Blog"}>Blog</Link>
                       </NavLink>
                     </div>
                   </NavItem>
                   <NavItem>
                     <NavLink className="auth-button">
                       <Button color="info" outline>
-                        <Link to={'/LogIn'}>LogIn</Link>
+                        <Link to={"/LogIn"}>LogIn</Link>
                       </Button>
                     </NavLink>
                   </NavItem>
                   <NavItem>
                     <NavLink className="auth-button">
                       <Button color="info" outline>
-                        <Link to = {'/SingIn'}> Sign Up </Link>
+                        <Link to={"/SignIn"}> Sign Up </Link>
                       </Button>
                     </NavLink>
                   </NavItem>
