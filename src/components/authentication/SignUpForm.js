@@ -100,7 +100,7 @@ class SignUpForm extends Component {
 
           <div className="FormField">
             <button className="FormField__Button mr-20">Sign Up</button>{" "}
-            <Link to="/SingIn" className="FormField__Link">
+            <Link to="/LogIn" className="FormField__Link">
               I'm already member
             </Link>
           </div>
