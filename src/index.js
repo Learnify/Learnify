@@ -1,19 +1,20 @@
 //Dependencies
-import React from 'react';
-import { render } from 'react-dom';
-import {BrowserRouter as Router} from 'react-router-dom';
+import React from "react";
+import { render } from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //Routes
-import AppRoutes from './routes';
+import AppRoutes from "./routes";
 
 //Assets
 // import './styles/index.css';
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from "./registerServiceWorker";
 
 render(
-    <Router>
-        <AppRoutes/>
-    </Router>, 
-    document.getElementById('root')
+  <Router>
+    <AppRoutes />
+  </Router>,
+  document.getElementById("root")
 );
 registerServiceWorker();
