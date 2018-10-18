@@ -1,21 +1,36 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
-// import Authentication from "./authentication.css";
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 
 class SignUpForm extends Component {
   constructor() {
     super();
 
+    this.toggle = this.toggle.bind(this);
+
     this.state = {
       email: "",
       password: "",
-      name: "",
+      firstname: "",
+      lastname: "",
+      career: "",
+      dropdownOpen: false,
       hasAgreed: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
   }
 
   handleChange(e) {
@@ -40,16 +55,44 @@ class SignUpForm extends Component {
       <div className="FormCenter">
         <form onSubmit={this.handleSubmit} className="FormFields">
           <div className="FormField">
-            <label className="FormField__Label" htmlFor="name">
-              Full Name
+            <label className="FormField__Label" htmlFor="firstname">
+              First Name
             </label>
             <input
               type="text"
-              id="name"
+              id="firstname"
               className="FormField__Input"
-              placeholder="Enter your full name"
-              name="name"
-              value={this.state.name}
+              placeholder="Enter your first name"
+              name="firstname"
+              value={this.state.firstname}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="FormField">
+            <label className="FormField__Label" htmlFor="lastname">
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="lastname"
+              className="FormField__Input"
+              placeholder="Enter your last name"
+              name="lastname"
+              value={this.state.lastname}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="FormField">
+            <label className="FormField__Label" htmlFor="email">
+              E-Mail Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="FormField__Input"
+              placeholder="Enter your email"
+              name="email"
+              value={this.state.email}
               onChange={this.handleChange}
             />
           </div>
@@ -68,20 +111,29 @@ class SignUpForm extends Component {
             />
           </div>
           <div className="FormField">
-            <label className="FormField__Label" htmlFor="email">
-              E-Mail Address
+            <label className="FormField__Label" htmlFor="career">
+              Career
             </label>
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+              <DropdownToggle caret>List of careers</DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem>1 - Engineering</DropdownItem>
+                <DropdownItem>2 - Medicine</DropdownItem>
+                <DropdownItem>3 - Architecture</DropdownItem>
+                <DropdownItem>4 - Music</DropdownItem>
+                <DropdownItem>5 - Physics</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
             <input
-              type="email"
-              id="email"
+              type="career"
+              id="career"
               className="FormField__Input"
-              placeholder="Enter your email"
-              name="email"
-              value={this.state.email}
+              placeholder="Enter your career number"
+              name="career"
+              value={this.state.career}
               onChange={this.handleChange}
             />
           </div>
-
           <div className="FormField">
             <label className="FormField__CheckboxLabel">
               <input
@@ -100,7 +152,7 @@ class SignUpForm extends Component {
 
           <div className="FormField">
             <button className="FormField__Button mr-20">Sign Up</button>{" "}
-            <Link to="/LogIn" className="FormField__Link">
+            <Link to="/sign-in" className="FormField__Link">
               I'm already member
             </Link>
           </div>
