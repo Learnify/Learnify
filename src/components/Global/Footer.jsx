@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { SocialIcon } from "react-social-icons";
+// import { SocialIcon } from "react-social-icons";
 import "./Footer.css";
+
+const { SocialIcon } = require("react-social-icons");
 
 class Footer extends Component {
   render() {
