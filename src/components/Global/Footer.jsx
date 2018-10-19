@@ -62,9 +62,9 @@ class Footer extends Component {
               </span>
             </div>
           </div>
-          <div className="row justify-content-center">
+          {/* <div className="row justify-content-center">
             <div>Learnify Inc. 2018</div>
-          </div>
+          </div> */}
         </div>
       </div>
     );

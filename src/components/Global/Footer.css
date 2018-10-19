@@ -3,9 +3,10 @@
 .footer {
   font-family: "Raleway" !important;
   color: #1f2833;
-  position: absolute;
+  position: absolute !important;
+  height: 60px !important;
   left: 0;
-  bottom: 0;
+  bottom: 0 !important;
   right: 0;
 }
 
