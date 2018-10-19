@@ -39,7 +39,7 @@ class Footer extends Component {
                 </li>
               </ul>
             </div>
-            <div className="col-12 col-sm-4 align-self">
+            {/* <div className="col-12 col-sm-4 align-self">
               <h5>Get in touch</h5>
               <span className="social-icon">
                 <SocialIcon
@@ -62,7 +62,7 @@ class Footer extends Component {
                   color="#45a29e"
                 />
               </span>
-            </div>
+            </div> */}
           </div>
           {/* <div className="row justify-content-center">
             <div>Learnify Inc. 2018</div>
