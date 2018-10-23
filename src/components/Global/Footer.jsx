@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
-import "./Footer.css";
+import "./Content.css";
 
 class Footer extends Component {
   render() {
     return (
       <div className="footer">
         <div className="container">
+          {/* <hr /> */}
           <div className="row justify-content-center">
             <div className="col-4 offset-1 col-sm-2">
               <h5>Links</h5>

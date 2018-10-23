@@ -22,8 +22,8 @@ class App extends Component {
       <div className="App">
         <NavBar />
         {/* <Authentication /> */}
-        <Content body={children} />
-        <Footer />
+        <Content body={children} className="content" />
+        <Footer className="footer" />
       </div>
     );
   }
