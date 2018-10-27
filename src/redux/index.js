@@ -1,11 +1,6 @@
 //Redux elements
+import React from "react";
+import render from "react-dom";
+import { Provider } from "react-redux";
 import store from "./store/index.js";
-import { addArticle } from "./actions/index.js";
-
-window.store = store;
-window.addArticle = addArticle;
-
-store.subscribe(() => console.log("Look ma, Redux!!"));
-store.dispatch(
-  addArticle({ name: "React Redux Tutorial for Beginners", id: 1 })
-);
+import App from "../components/App.js";
