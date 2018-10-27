@@ -1,4 +1,4 @@
-import ADD_ARTICLE from "../constants/types.js";
+import { ADD_ARTICLE } from "../constants/types.js";
 import { truncate } from "fs";
 
 const initialState = {

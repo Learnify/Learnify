@@ -12,6 +12,9 @@ import NavBar from "./landing/Navbar.jsx";
 //Data
 import "../styles/App.css";
 
+//Redux
+import index from "../redux/index.js";
+
 class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired
