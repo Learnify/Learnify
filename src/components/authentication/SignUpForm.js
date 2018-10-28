@@ -4,7 +4,8 @@ import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Input
 } from "reactstrap";
 
 class SignUpForm extends Component {
@@ -38,6 +39,8 @@ class SignUpForm extends Component {
     let value = target.type === "checkbox" ? target.checked : target.value;
     let name = target.name;
 
+    console.log(value);
+
     this.setState({
       [name]: value
     });
@@ -45,6 +48,11 @@ class SignUpForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    // const options = {
+    //   method: "POST",
+    //   body: JSON.stringify(this.state)
+    // };
 
     console.log("The form was submitted with the following data:");
     console.log(this.state);
@@ -110,29 +118,23 @@ class SignUpForm extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="FormField">
+          <div className="FormField career">
             <label className="FormField__Label" htmlFor="career">
               Career
             </label>
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-              <DropdownToggle caret>List of careers</DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>1 - Engineering</DropdownItem>
-                <DropdownItem>2 - Medicine</DropdownItem>
-                <DropdownItem>3 - Architecture</DropdownItem>
-                <DropdownItem>4 - Music</DropdownItem>
-                <DropdownItem>5 - Physics</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-            <input
-              type="career"
-              id="career"
-              className="FormField__Input"
-              placeholder="Enter your career number"
+            <Input
+              type="select"
               name="career"
-              value={this.state.career}
+              id="career"
               onChange={this.handleChange}
-            />
+              className="FormField_Input"
+            >
+              <option value="1">Engineering</option>
+              <option value="2">Medicine</option>
+              <option value="3">Architecture</option>
+              <option value="4">Music</option>
+              <option value="5">Physics</option>
+            </Input>
           </div>
           <div className="FormField">
             <label className="FormField__CheckboxLabel">
