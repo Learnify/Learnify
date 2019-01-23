@@ -12,6 +12,7 @@ import SignUpForm from "./components/authentication/SignUpForm";
 import Authentication from "./components/authentication/authentication";
 import Contact from "./components/contact/contact";
 import Blog from "./components/blog/blog";
+import ResultPage from "./components/search/ResultPage";
 
 // Muchachos lo dejo comentado para que no genere errores al ejecutar
 // const PrivateRoute = ({ component: Component, ...rest}) => (
@@ -30,6 +31,7 @@ const AppRouters = () => (
       <Route exact path="/SignIn" component={SignUpForm} />
       <Route exact path="/Contact" component={Contact} />
       <Route exact path="/Blog" component={Blog} />
+      <Route exact path="/Results" component={ResultPage} />
       <Route exact path="/" component={Landing} />
       {/* <PrivateRoute exact path='/Profile' component={Profile}/>   */}
       <Route component={Page404} />

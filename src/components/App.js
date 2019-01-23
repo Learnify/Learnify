@@ -1,6 +1,7 @@
 //Dependencies
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
 //Components
 // import Header from "./Global/Header";
@@ -19,12 +20,32 @@ class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired
   };
+
+  state = {
+    redirect: false
+  };
+
+  handleSearch = e => {
+    this.setState({redirect: true});
+  };
+
+  componentDidUpdate(prevState){
+    if(this.state.redirect){
+      this.setState({redirect: false});
+    }
+  }
+
   render() {
     const { children } = this.props;
+    let content = <Content body={children} className="content" />;
+    if(this.state.redirect){
+      content = <Redirect to="/Results"/>
+    }
+
     return (
       <div className="App">
-        <NavBar />
-        <Content body={children} className="content" />
+        <NavBar handleSearchResults={this.handleSearch}/>
+        {content}
         <Footer className="footer" />
       </div>
     );

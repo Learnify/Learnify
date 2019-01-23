@@ -7,6 +7,9 @@ class Content extends Component {
   static propTypes = {
     body: PropTypes.object.isRequired
   };
+
+  handleSearch = e => {};
+
   render() {
     const { body } = this.props;
     return <div className="Content">{body}</div>;

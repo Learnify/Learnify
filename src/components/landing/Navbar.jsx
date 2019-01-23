@@ -38,21 +38,17 @@ class NavBar extends Component {
 
   handleSubmitSearch = e => {
     e.preventDefault();
-    const search = e.target[0].value;
-    console.log(search);
-    this.setState({ redirect: true });
+    if(e.target[0].value && e.target[0].value !== ""){
+      this.props.handleSearchResults(e);
+    }
   };
 
   state = {};
   render() {
-    const { redirect } = this.state;
+    const {redirect} = this.state;
 
-    if (redirect) {
-      return (
-        <Switch>
-          <Redirect to="Authentication" />
-        </Switch>
-      );
+    if(redirect){
+      return <Redirect to="Results"/>
     }
 
     return (
