@@ -24,7 +24,6 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        {/* <Authentication /> */}
         <Content body={children} className="content" />
         <Footer className="footer" />
       </div>

@@ -16,7 +16,7 @@ import {
   FormGroup
 } from "reactstrap";
 
-import { Link } from "react-router-dom";
+import { Link, Redirect, Switch } from "react-router-dom";
 import "./navbar.css";
 
 class NavBar extends Component {
@@ -25,22 +25,41 @@ class NavBar extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      redirect: false
     };
   }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
 
+  handleSubmitSearch = e => {
+    e.preventDefault();
+    const search = e.target[0].value;
+    console.log(search);
+    this.setState({ redirect: true });
+  };
+
   state = {};
   render() {
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return (
+        <Switch>
+          <Redirect to="Authentication" />
+        </Switch>
+      );
+    }
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand text-primary" href="#">
-          <Link to={"/"}>Learnify</Link>
-        </a>
+        <Link className="navbar-brand text-primary" to={"/"}>
+          Learnify
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -73,7 +92,7 @@ class NavBar extends Component {
                 LogIn
               </Link>
             </li>
-            <li class="nav-item mx-auto">
+            <li className="nav-item mx-auto">
               <Link
                 className="nav-link text-primary btn btn-outline-primary auth-button"
                 to={"/SignIn"}
@@ -82,14 +101,20 @@ class NavBar extends Component {
               </Link>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <form
+            className="form-inline my-2 my-lg-0"
+            onSubmit={this.handleSubmitSearch}
+          >
             <input
-              class="form-control mr-sm-2"
+              className="form-control mr-sm-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+            <button
+              className="btn btn-outline-primary my-2 my-sm-0"
+              type="submit"
+            >
               Search
             </button>
           </form>
