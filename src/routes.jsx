@@ -5,7 +5,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 //Components
 import App from "./components/App";
 import Landing from "./components/landing/Lading";
-// import Profile from "./components/profile/Profile";
+import Profile from "./components/profile/Profile";
 import Page404 from "./components/Page404";
 import SignInForm from "./components/authentication/SignInForm";
 import SignUpForm from "./components/authentication/SignUpForm";
@@ -33,7 +33,8 @@ const AppRouters = () => (
       <Route exact path="/Blog" component={Blog} />
       <Route exact path="/Results" component={ResultPage} />
       <Route exact path="/" component={Landing} />
-      {/* <PrivateRoute exact path='/Profile' component={Profile}/>   */}
+      <Route exact path="/Profile" component={Profile} />
+      {/* <PrivateRoute exact path='/Profile:user_id' component={Profile}/>   */}
       <Route component={Page404} />
     </Switch>
   </App>
