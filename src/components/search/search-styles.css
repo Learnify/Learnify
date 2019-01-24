@@ -3,3 +3,39 @@ ul{
     align-content: left;
     text-align: left; 
 }
+
+.profile-mashup{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background: #fff;
+}
+
+.profile-mashup-row{
+    justify-content: center;
+}
+
+.profile-mashup-img{
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 10px 0  #0B0C10;
+    border-radius: 50%;
+    margin: 5px 10px;
+}
+
+.tutors-found-pics{
+    margin: 10px 0;
+}
+
+.tutors-found-list{
+    margin-top: 70px;
+}
+
+.tutors-found-pics h1{
+    color: #03a5c6;
+}
+
+.search-results{
+    margin-bottom: 50px;
+}
