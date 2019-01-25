@@ -9,7 +9,7 @@ class Landing extends Component {
         <h1>
           LEARNIFY
         </h1>
-        <p class="main" align="center">
+        <p className="main" align="center">
         Welcome to the app that will help you improve all your skills.
         </p>
       </div>

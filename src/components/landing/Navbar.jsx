@@ -52,8 +52,8 @@ class NavBar extends Component {
     }
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link className="navbar-brand text-primary" to={"/"}>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <Link className="navbar-brand txt-primary" to={"/"}>
           Learnify
         </Link>
         <button
@@ -71,18 +71,18 @@ class NavBar extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link className="nav-link text-secondary" to={"/Contact"}>
+              <Link className="nav-link txt-secondary" to={"/Contact"}>
                 Contact
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-secondary" to={"/Blog"}>
+              <Link className="nav-link txt-secondary" to={"/Blog"}>
                 Blog
               </Link>
             </li>
             <li className="nav-item mx-auto pr-sm-2">
               <Link
-                className="nav-link text-primary btn btn-outline-primary auth-button"
+                className="nav-link txt-primary btn btn-outline-info auth-button"
                 to={"/LogIn"}
               >
                 LogIn
@@ -90,7 +90,7 @@ class NavBar extends Component {
             </li>
             <li className="nav-item mx-auto">
               <Link
-                className="nav-link text-primary btn btn-outline-primary auth-button"
+                className="nav-link txt-primary btn btn-outline-info auth-button"
                 to={"/SignIn"}
               >
                 Sign Up
@@ -108,7 +108,7 @@ class NavBar extends Component {
               aria-label="Search"
             />
             <button
-              className="btn btn-outline-primary my-2 my-sm-0"
+              className="txt-primary btn btn-outline-info my-2 my-sm-0"
               type="submit"
             >
               Search

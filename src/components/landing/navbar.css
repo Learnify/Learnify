@@ -2,8 +2,15 @@
 
 .navbar {
   font-family: "Raleway";
-  color: white;
-  margin-left: 2% !important;
-  margin-right: 2% !important;
-  /*background: -webkit-linear-gradient(bottom, #1F2833, #1F2833);
-*/}
+  padding-left: 2% !important;
+  padding-right: 2% !important;
+  background: -webkit-linear-gradient(bottom, #0B0C10, #1F2833);
+}
+.txt-primary{
+  color: #66FCF1 !important;
+  text-decoration: none !important;
+}
+.txt-secondary{
+  color: #C5C6C7 !important;
+  text-decoration: none !important;
+}

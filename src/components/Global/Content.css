@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,300i,400,500,600,700");
-/* Se modifica desde aqui */
+/* Se modifica desde aqui
 html {
   height: 100%;
   box-sizing: border-box;
@@ -26,14 +26,43 @@ body {
   right: 0;
   bottom: 0;
   position: relative;
-}
+} */
 /* Hasta aqui para controlar el footer*/
+/* 
+html{
+  height: 100%;
+  margin: 0 0 0 0;
+} */
 
+footer .container{
+  min-width: 100%;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+.footer{
+  width: 100%;
+  color: #C5C6C7;
+  padding-top: 2%;
+  background: -webkit-linear-gradient(top, #0B0C10, #1F2833);
+}
+.list-unstyled{
+  text-align: center;
+}
+.link-text{
+  color: #45A29E;
+  text-decoration: none;
+}
+.Content{
+  min-height: 100%;
+  margin-top: 8%;
+}
 .social-icon {
   padding: 10px;
 }
-
-.footer,
+.learnify-footer{
+  padding-bottom: 2%;
+}
+ /* .footer,
 .Content:after {
   height: 200px;
 }
@@ -44,7 +73,6 @@ body {
 }
 
 .Content {
-  /* equal to footer height */
-  margin-bottom: -200px;
+  margin-bottom: -200px; 
   min-height: 100%;
-}
+}  */

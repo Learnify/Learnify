@@ -28,9 +28,9 @@
   border-bottom-right-radius: 25px;
 }
 
-.FormCenter {
+/* .FormCenter {
   margin-bottom: 100px;
-}
+} */
 
 .FormTitle {
   color: #707c8b;
@@ -57,7 +57,7 @@
 }
 
 .FormField {
-  margin-bottom: 40px;
+  margin-bottom: 2%;
 }
 
 .FormField__Label {
@@ -95,10 +95,10 @@
 }
 
 .FormField__Link {
-  color: #66707d;
+  color: #C5C6C7;
   text-decoration: none;
   display: inline-block;
-  border-bottom: 1.5px solid #225e62;
+  border-bottom: 1.5px solid #45A29E;
   padding-bottom: 5px;
 }
 
@@ -113,8 +113,8 @@
 }
 
 .FormField__TermsLink {
-  color: black;
-  border-bottom: 1px solid #4dd0e1;
+  color: #C5C6C7;
+  border-bottom: 1px solid #45A29E;
   text-decoration: none;
   display: inline-block;
   padding-bottom: 2px;
