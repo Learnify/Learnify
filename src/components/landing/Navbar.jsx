@@ -52,7 +52,7 @@ class NavBar extends Component {
     }
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top bg-light">
         <Link className="navbar-brand txt-primary" to={"/"}>
           Learnify
         </Link>
@@ -80,7 +80,8 @@ class NavBar extends Component {
                 Blog
               </Link>
             </li>
-            <li className="nav-item mx-auto pr-sm-2">
+            {/* El mx-auto molesta en vista pequeña los botones  */}
+            <li className="nav-item mx-auto pr-sm-2"> 
               <Link
                 className="nav-link txt-primary btn btn-outline-info auth-button"
                 to={"/LogIn"}
@@ -88,6 +89,7 @@ class NavBar extends Component {
                 LogIn
               </Link>
             </li>
+            {/* El mx-auto molesta en vista pequeña los botones  */}
             <li className="nav-item mx-auto">
               <Link
                 className="nav-link txt-primary btn btn-outline-info auth-button"

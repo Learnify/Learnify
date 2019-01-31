@@ -50,11 +50,14 @@ footer .container{
 }
 .link-text{
   color: #45A29E;
-  text-decoration: none;
+  text-decoration: none !important;
+}
+.link-text:hover{
+  color: #66FCF1;
 }
 .Content{
-  min-height: 100%;
-  margin-top: 8%;
+  margin-top: 2%;
+  color: #C5C6C7;
 }
 .social-icon {
   padding: 10px;
