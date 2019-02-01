@@ -29,7 +29,7 @@ class ResultPage extends Component {
 
         return (
             <div className="container search-results">
-                <div className="row">
+                <div className="row container-row">
                     <div className="col-sm-4 tutors-found-pics">
                         <h1>Tutors found</h1>
                         <div className="profile-mashup">
@@ -53,7 +53,7 @@ class ResultPage extends Component {
                         </ul>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row container-row">
                     <div className="col-sm-4 tutors-found-pics">
                         <h1>Subjects found</h1>
                         <div className="profile-mashup">

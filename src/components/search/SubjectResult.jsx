@@ -6,7 +6,7 @@ class SubjectResult extends Component {
     return (
       <div>
         <h5>
-          <Link to="#" className="text-primary">{this.props.name}</Link>
+          <Link to="#" className="text-search">{this.props.name}</Link>
         </h5>
       </div>
     );

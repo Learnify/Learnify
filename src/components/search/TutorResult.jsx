@@ -7,7 +7,7 @@ class TutorResult extends Component {
     return (
       <div>
         <h4>
-          <Link to="#" className="text-primary">{this.props.name}</Link>
+          <Link to="#" className="text-search">{this.props.name}</Link>
         </h4>
         {this.props.subjects.slice(0, 3).map(name => (
           <p>{name}</p>
