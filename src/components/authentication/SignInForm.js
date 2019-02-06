@@ -10,6 +10,10 @@ class SignInForm extends Component {
   constructor() {
     super();
 
+    if (this.props) {
+      this.props.dispatch(userActions.logout());
+    }
+
     this.state = {
       email: "",
       password: ""
@@ -17,8 +21,6 @@ class SignInForm extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
-    // userActions.logout();
   }
 
   handleChange(e) {
@@ -34,8 +36,13 @@ class SignInForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log("The form was submitted with the following data:");
-    console.log(this.state);
+    this.setState({ submitted: true });
+    const { email, password } = this.state;
+    const { dispatch } = this.props;
+
+    if (email && password) {
+      dispatch(userActions.login(email, password));
+    }
   }
 
   render() {

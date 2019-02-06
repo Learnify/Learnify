@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Input
-} from "reactstrap";
+import { Input } from "reactstrap";
+import { connect } from "react-redux";
+import { userActions } from "../../redux/actions/user-actions";
 
 class SignUpForm extends Component {
   constructor() {
@@ -19,9 +15,10 @@ class SignUpForm extends Component {
       password: "",
       firstname: "",
       lastname: "",
-      career: "",
+      career: 1,
       dropdownOpen: false,
-      hasAgreed: false
+      hasAgreed: false,
+      submitted: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -39,8 +36,6 @@ class SignUpForm extends Component {
     let value = target.type === "checkbox" ? target.checked : target.value;
     let name = target.name;
 
-    console.log(value);
-
     this.setState({
       [name]: value
     });
@@ -49,13 +44,19 @@ class SignUpForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    // const options = {
-    //   method: "POST",
-    //   body: JSON.stringify(this.state)
-    // };
+    this.setState({ submitted: true });
+    const { email, password, firstname, lastname, career } = this.state;
 
-    console.log("The form was submitted with the following data:");
-    console.log(this.state);
+    const { dispatch } = this.props;
+    if (firstname && lastname && email && password && career) {
+      const user = {
+        firstname,
+        lastname,
+        email,
+        password
+      };
+      dispatch(userActions.register(user));
+    }
   }
 
   render() {
@@ -163,4 +164,13 @@ class SignUpForm extends Component {
     );
   }
 }
-export default SignUpForm;
+
+function mapStateToProps(state) {
+  const { registering } = state.registration;
+  return {
+    registering
+  };
+}
+
+const connectedRegisterPage = connect(mapStateToProps)(SignUpForm);
+export default connectedRegisterPage;

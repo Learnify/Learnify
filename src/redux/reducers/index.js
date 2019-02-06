@@ -1,9 +1,9 @@
 import { ADD_ARTICLE } from "../constants/types.js";
 import { truncate } from "fs";
 import { combineReducers } from "redux";
-import authReducer from "./auth-reducer";
+import { authentication } from "./auth-reducer";
 import { registration } from "./registration-reducer";
 
-const rootReducer = combineReducers(authReducer, registration);
+const rootReducer = combineReducers({ authentication, registration });
 
 export default rootReducer;
