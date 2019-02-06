@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { userActions } from "../../redux/actions/user-actions";
 
 // import Authentication from "./authentication.css";
 
@@ -14,6 +17,8 @@ class SignInForm extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    // userActions.logout();
   }
 
   handleChange(e) {
@@ -83,4 +88,12 @@ class SignInForm extends Component {
   }
 }
 
-export default SignInForm;
+function mapStateToProps(state) {
+  const { loggingIn } = state.authentication;
+  return {
+    loggingIn
+  };
+}
+
+const connectedLoginPage = connect(mapStateToProps)(SignInForm);
+export default connectedLoginPage;

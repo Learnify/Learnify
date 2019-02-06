@@ -1,17 +1,9 @@
 import { ADD_ARTICLE } from "../constants/types.js";
 import { truncate } from "fs";
+import { combineReducers } from "redux";
+import authReducer from "./auth-reducer";
+import { registration } from "./registration-reducer";
 
-const initialState = {
-  articles: []
-};
-
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_ARTICLE:
-      return { ...state, articles: [...state.articles, action.payload] };
-    default:
-      return state;
-  }
-};
+const rootReducer = combineReducers(authReducer, registration);
 
 export default rootReducer;
