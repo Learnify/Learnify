@@ -9,6 +9,7 @@ import Profile from "./components/profile/Profile";
 import Page404 from "./components/Page404";
 import SignInForm from "./components/authentication/SignInForm";
 import SignUpForm from "./components/authentication/SignUpForm";
+import ChangePassword from "./components/authentication/ChangePassword";
 import Authentication from "./components/authentication/authentication";
 import Contact from "./components/contact/contact";
 import Blog from "./components/blog/blog";
@@ -29,6 +30,7 @@ const AppRouters = () => (
       <Route exact path="/Authentication" component={Authentication} />
       <Route exact path="/LogIn" component={SignInForm} />
       <Route exact path="/SignIn" component={SignUpForm} />
+      <Route exact path="/ChangePassword" component={ChangePassword} />
       <Route exact path="/Contact" component={Contact} />
       <Route exact path="/Blog" component={Blog} />
       <Route exact path="/Results" component={ResultPage} />
