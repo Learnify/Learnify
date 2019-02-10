@@ -12,6 +12,7 @@ import SignUpForm from "./components/authentication/SignUpForm";
 import ChangePassword from "./components/authentication/ChangePassword";
 import Authentication from "./components/authentication/authentication";
 import Contact from "./components/contact/contact";
+import Admin from "./components/admin/Changes";
 import Blog from "./components/blog/blog";
 import ResultPage from "./components/search/ResultPage";
 
@@ -36,6 +37,7 @@ const AppRouters = () => (
       <Route exact path="/Results" component={ResultPage} />
       <Route exact path="/" component={Landing} />
       <Route exact path="/Profile" component={Profile} />
+      <Route exact path="/Changes" component={Admin} />
       {/* <PrivateRoute exact path='/Profile:user_id' component={Profile}/>   */}
       <Route component={Page404} />
     </Switch>
