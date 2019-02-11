@@ -37,6 +37,7 @@ class App extends Component {
   }
 
   render() {
+
     const { children } = this.props;
     let content = <Content body={children} className="content" />;
     if (this.state.redirect) {
