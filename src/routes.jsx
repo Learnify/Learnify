@@ -1,5 +1,5 @@
 //Depencencies
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 //Components
@@ -15,6 +15,7 @@ import Contact from "./components/contact/contact";
 import Admin from "./components/admin/Changes";
 import Blog from "./components/blog/blog";
 import ResultPage from "./components/search/ResultPage";
+import { PrivateRoute } from "./components/private-route/PrivateRoute";
 
 // Muchachos lo dejo comentado para que no genere errores al ejecutar
 // const PrivateRoute = ({ component: Component, ...rest}) => (
@@ -36,9 +37,9 @@ const AppRouters = () => (
       <Route exact path="/Blog" component={Blog} />
       <Route exact path="/Results" component={ResultPage} />
       <Route exact path="/" component={Landing} />
-      <Route exact path="/Profile" component={Profile} />
+      {/* <Route exact path="/Profile" component={Profile} /> */}
       <Route exact path="/Changes" component={Admin} />
-      {/* <PrivateRoute exact path='/Profile:user_id' component={Profile}/>   */}
+      <PrivateRoute exact path='/Profile' component={Profile} />
       <Route component={Page404} />
     </Switch>
   </App>
