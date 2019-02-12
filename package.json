@@ -2,6 +2,7 @@
   "name": "learnify_front",
   "version": "0.1.0",
   "private": true,
+  "start": "PORT=3006 react-scripts start",
   "dependencies": {
     "ajv": "^6.7.0",
     "bootstrap": "^4.2.1",

@@ -16,7 +16,7 @@ import AppRoutes from "./routes";
 // import './styles/index.css';
 import registerServiceWorker from "./registerServiceWorker";
 
-configureFakeBackend();
+// configureFakeBackend();
 
 render(
   <Router history={history}>

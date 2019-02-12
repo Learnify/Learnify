@@ -1,4 +1,5 @@
 import { authHeader } from "../helpers/auth-header";
+import { authAddress , signupAddress } from "../constants/back-address";
 
 export const userService = {
   login,
@@ -17,7 +18,7 @@ function login(email, password) {
     body: JSON.stringify({ email, password })
   };
 
-  return fetch(`http://192.168.0.11:3000/authenticate`, requestOptions)
+  return fetch(authAddress, requestOptions)
     .then(handleResponse)
     .then(user => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -50,13 +51,40 @@ function getById(id) {
 }
 
 function register(user) {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(user)
+
+  const { email, password, password_confirmation, firstname, lastname, career_id, role_id } = user;
+  const newUser = {
+    name: firstname,
+    last_name: lastname,
+    email,
+    password_digest: password,
+    role_id,
+    career_id
   };
 
-  return fetch(`/users/register`, requestOptions).then(handleResponse);
+  const admin = {
+    email:"admin@example.com.co",
+    password:"123456789"
+  };
+
+
+  return login(admin.email, admin.password).then(
+    token => {
+
+      const requestOptions = {
+        method: "POST",
+        headers: { "Authorization": token.auth_token.toString() , "Content-Type": "application/json" },
+        body: JSON.stringify(newUser)
+      };
+
+      return fetch(signupAddress, requestOptions).
+        then(handleResponse).then(
+          user_returned => {
+            return console.log(user_returned);
+          }
+        );
+    }
+  );
 }
 
 function update(user) {

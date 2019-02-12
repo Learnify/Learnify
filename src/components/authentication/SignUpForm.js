@@ -13,9 +13,11 @@ class SignUpForm extends Component {
     this.state = {
       email: "",
       password: "",
+      password_confirmation: "",
       firstname: "",
       lastname: "",
-      career: 1,
+      career_id: 1,
+      role_id: 1,
       dropdownOpen: false,
       hasAgreed: false,
       submitted: false
@@ -45,15 +47,23 @@ class SignUpForm extends Component {
     e.preventDefault();
 
     this.setState({ submitted: true });
-    const { email, password, firstname, lastname, career } = this.state;
+
+    if(!this.state.hasAgreed){
+      return;
+    }
+
+    const { email, password, password_confirmation, firstname, lastname, career_id, role_id } = this.state;
 
     const { dispatch } = this.props;
-    if (firstname && lastname && email && password && career) {
+    if (firstname && lastname && email && password && password_confirmation && career_id && role_id) {
       const user = {
         firstname,
         lastname,
         email,
-        password
+        password,
+        password_confirmation,
+        career_id,
+        role_id
       };
       dispatch(userActions.register(user));
     }
@@ -119,13 +129,27 @@ class SignUpForm extends Component {
               onChange={this.handleChange}
             />
           </div>
+          <div className="FormField">
+            <label className="FormField__Label" htmlFor="password">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="password_confirmation"
+              className="FormField__Input"
+              placeholder="Confirm your password"
+              name="password_confirmation"
+              value={this.state.password_confirmation}
+              onChange={this.handleChange}
+            />
+          </div>
           <div className="FormField career">
             <label className="FormField__Label" htmlFor="career">
               Career
             </label>
             <Input
               type="select"
-              name="career"
+              name="career_id"
               id="career"
               onChange={this.handleChange}
               className="FormField_Input"
@@ -151,6 +175,7 @@ class SignUpForm extends Component {
                 terms of service
               </a>
             </label>
+            {!this.state.hasAgreed && this.state.submitted && <p className="FormField_Label FormField__Alert">You must agree to the terms and conditions first!</p>}
           </div>
 
           <div className="FormField">
