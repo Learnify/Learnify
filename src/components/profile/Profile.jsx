@@ -1,12 +1,27 @@
 import React, { Component } from 'react';
+import { userActions } from "../../redux/actions/user-actions";
+import { connect } from "react-redux";
+
 import "./Profile.css";
+
 class Profile extends Component {
 
+  constructor() {
+    super();
+
+    // console.log();
+    this.state = {
+
+    };
+  }
+
   componentWillMount() {
-    console.log(this.props);
+    this.props.dispatch(userActions.getAll());
   }
 
   render() {
+    const token = this.props.auth_token;
+
     return (
       <div className="container emp-profile">
         <form method="post">
@@ -107,4 +122,12 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+function mapStateToProps(state) {
+  const { auth_token } = state.authentication.user;
+  return {
+    auth_token
+  };
+}
+
+const connectedProfilePage = connect(mapStateToProps)(Profile);
+export default connectedProfilePage;

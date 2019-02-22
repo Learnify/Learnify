@@ -1,5 +1,5 @@
 import { authHeader } from "../helpers/auth-header";
-import { authAddress , signupAddress } from "../constants/back-address";
+import { authAddress, signupAddress } from "../constants/back-address";
 
 export const userService = {
   login,
@@ -20,16 +20,17 @@ function login(email, password) {
 
   return fetch(authAddress, requestOptions)
     .then(handleResponse)
-    .then(user => {
+    .then(token => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem("user", JSON.stringify(user));
-      return user;
+      localStorage.setItem("token", JSON.stringify(token));
+      // localStorage.setItem("token");
+      return token;
     });
 }
 
 function logout() {
   // remove user from local storage to log user out
-  localStorage.removeItem("user");
+  localStorage.removeItem("token");
 }
 
 function getAll() {
@@ -63,8 +64,8 @@ function register(user) {
   };
 
   const admin = {
-    email:"admin@example.com.co",
-    password:"123456789"
+    email: "admin@example.com.co",
+    password: "123456789"
   };
 
 
@@ -73,14 +74,14 @@ function register(user) {
 
       const requestOptions = {
         method: "POST",
-        headers: { "Authorization": token.auth_token.toString() , "Content-Type": "application/json" },
+        headers: { "Authorization": token.auth_token.toString(), "Content-Type": "application/json" },
         body: JSON.stringify(newUser)
       };
 
       return fetch(signupAddress, requestOptions).
         then(handleResponse).then(
           user_returned => {
-            return console.log(user_returned);
+
           }
         );
     }

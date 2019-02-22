@@ -15,6 +15,7 @@ import Contact from "./components/contact/contact";
 import Admin from "./components/admin/Changes";
 import Blog from "./components/blog/blog";
 import ResultPage from "./components/search/ResultPage";
+import AddSubject from "./components/add/add-subject";
 import { PrivateRoute } from "./components/private-route/PrivateRoute";
 
 // Muchachos lo dejo comentado para que no genere errores al ejecutar
@@ -36,6 +37,7 @@ const AppRouters = () => (
       <Route exact path="/Contact" component={Contact} />
       <Route exact path="/Blog" component={Blog} />
       <Route exact path="/Results" component={ResultPage} />
+      <Route exact path="/AddSubject" component={AddSubject} />
       <Route exact path="/" component={Landing} />
       {/* <Route exact path="/Profile" component={Profile} /> */}
       <Route exact path="/Changes" component={Admin} />
