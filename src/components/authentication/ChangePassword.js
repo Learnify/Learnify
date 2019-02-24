@@ -15,7 +15,7 @@ class ChangePassword extends Component {
     }*/
 
     this.state = {
-      Actual: "",
+      // Actual: "",
       New: "",
       Confirm: ""
     };
@@ -54,7 +54,7 @@ class ChangePassword extends Component {
           className="FormFields"
           onSubmit={this.handleSubmit}
         >
-          <div className="FormField">
+          {/* <div className="FormField">
             <label className="FormField__Label" htmlFor="Actual">
               Actual Password
             </label>
@@ -67,7 +67,7 @@ class ChangePassword extends Component {
               value={this.state.Actual}
               onChange={this.handleChange}
             />
-          </div>
+          </div> */}
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="New">
