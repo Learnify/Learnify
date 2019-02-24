@@ -18,15 +18,6 @@ import ResultPage from "./components/search/ResultPage";
 import AddSubject from "./components/add/add-subject";
 import { PrivateRoute } from "./components/private-route/PrivateRoute";
 
-// Muchachos lo dejo comentado para que no genere errores al ejecutar
-// const PrivateRoute = ({ component: Component, ...rest}) => (
-//   <Route {...rest} render ={(props)=>(
-//     fakeAuth.isAuthenticated === true Este es el condicional que toca modificar cuando se implemente la sesion omitan esto si no lo entienden
-//       ? <Component {...props}/>
-//       : <Redirect to ='/LogIn'/>
-//   )}/>
-// )
-
 const AppRouters = () => (
   <App>
     <Switch>
