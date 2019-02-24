@@ -64,6 +64,14 @@
   margin-bottom: 2%;
 }
 
+.FormField__LabelP {
+  display: block;
+  text-transform: uppercase;
+  font-size: 3em;
+  color: #66FCF1;
+  margin-bottom: 75px;
+} 
+
 .FormField__Label {
   display: block;
   text-transform: uppercase;

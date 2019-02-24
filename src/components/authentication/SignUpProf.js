@@ -4,7 +4,7 @@ import { Input } from "reactstrap";
 import { connect } from "react-redux";
 import { userActions } from "../../redux/actions/user-actions";
 
-class SignUpForm extends Component {
+class SignUpProf extends Component {
   constructor() {
     super();
 
@@ -17,7 +17,7 @@ class SignUpForm extends Component {
       firstname: "",
       lastname: "",
       career_id: 1,
-      role_id: 1,
+      role_id: 2,
       dropdownOpen: false,
       hasAgreed: false,
       submitted: false
@@ -71,8 +71,14 @@ class SignUpForm extends Component {
 
   render() {
     return (
+
       <div className="FormCenter">
         <form onSubmit={this.handleSubmit} className="FormFields">
+          <div className="FormField">
+            <label className="FormField__LabelP" htmlFor="professor">
+              Professor Sign Up
+            </label>
+          </div>
           <div className="FormField">
             <label className="FormField__Label" htmlFor="firstname">
               First Name
@@ -197,5 +203,5 @@ function mapStateToProps(state) {
   };
 }
 
-const connectedRegisterPage = connect(mapStateToProps)(SignUpForm);
+const connectedRegisterPage = connect(mapStateToProps)(SignUpProf);
 export default connectedRegisterPage;
