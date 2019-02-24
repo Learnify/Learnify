@@ -6,6 +6,7 @@
   padding-right: 2% !important;
   background: -webkit-linear-gradient(bottom, #0B0C10, #1F2833);
 }
+
 .navbar-toggler-icon{
   color: #66FCF1 !important;
 }
@@ -16,4 +17,21 @@
 .txt-secondary{
   color: #C5C6C7 !important;
   text-decoration: none !important;
+}
+#log-out{
+  margin-left: 0.5%;
+}
+@media screen and (max-width: 990px) {
+ .nav-item .btn, #log-out{
+   min-width: 20%;
+   margin-right: 80%;
+   margin-left: 0%;
+   margin-top: 0% !important;
+   margin-bottom: 1%;
+   padding-top: 0.5%;
+   padding-bottom: 0.5%;
+ }
+ #search-form{
+   display: none;
+ }
 }

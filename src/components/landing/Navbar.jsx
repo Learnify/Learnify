@@ -80,8 +80,8 @@ class NavBar extends Component {
                 Blog
               </Link>
             </li>
-            {/* El mx-auto molesta en vista pequeña los botones  */}
-            <li className="nav-item mx-auto pr-sm-2"> 
+            
+            <li className="nav-item pr-sm-2"> 
               <Link
                 className="nav-link txt-primary btn btn-outline-info auth-button"
                 to={"/LogIn"}
@@ -89,8 +89,8 @@ class NavBar extends Component {
                 LogIn
               </Link>
             </li>
-            {/* El mx-auto molesta en vista pequeña los botones  */}
-            <li className="nav-item mx-auto">
+            
+            <li className="nav-item">
               <Link
                 className="nav-link txt-primary btn btn-outline-info auth-button"
                 to={"/SignIn"}
@@ -99,9 +99,10 @@ class NavBar extends Component {
               </Link>
             </li>
           </ul>
+          
           <form
             className="form-inline my-2 my-lg-0"
-            onSubmit={this.handleSubmitSearch}
+            onSubmit={this.handleSubmitSearch} id="search-form"
           >
             <input
               className="form-control mr-sm-2"
@@ -116,67 +117,13 @@ class NavBar extends Component {
               Search
             </button>
           </form>
+          <button className="txt-primary btn btn-outline-info my-2 my-sm-0" id="log-out">
+            LogOut
+          </button>
         </div>
       </nav>
 
-      // <Navbar light expand="md">
-      //   <div className="container-fluid">
-      //     <div className="row">
-      //       <div className="col-md-2 col-4" align="left">
-      //         <NavbarBrand className="learnify-navbar all">
-      //           <Link to={"/"}>Learnify</Link>
-      //         </NavbarBrand>
-      //       </div>
-      //       <div className="col-md-10 col-8 dropdown-navbar">
-      //         <NavbarToggler className="mr2" onClick={this.toggle} />
-      //         <Collapse isOpen={this.state.isOpen} navbar>
-      //           <div className="row">
-      //             <div className="col-md-6 col-sm-12">
-      //               <FormGroup className="search-container w-100 md-0 active-cyan-3 active-cyan-4">
-      //                 <Input
-      //                   type="search"
-      //                   name="search"
-      //                   id="exampleSearch"
-      //                   placeholder="search for tutoring..."
-      //                 />
-      //               </FormGroup>
-      //             </div>
-      //             <div className="col-md-6 col-sm-12">
-      //               <Nav className="ml-auto navbar-inverse auth-buttons" navbar>
-      //                 <NavItem>
-      //                   <NavLink className="all">
-      //                     <Link to={"/Contact"}>Contact</Link>
-      //                   </NavLink>
-      //                 </NavItem>
-      //                 <NavItem>
-      //                   <div className="navbar-blog">
-      //                     <NavLink className="all">
-      //                       <Link to={"/Blog"}>Blog</Link>
-      //                     </NavLink>
-      //                   </div>
-      //                 </NavItem>
-      //                 <NavItem>
-      //                   <NavLink className="auth-button">
-      //                     <Button color="info" outline>
-      //                       <Link to={"/LogIn"}>LogIn</Link>
-      //                     </Button>
-      //                   </NavLink>
-      //                 </NavItem>
-      //                 <NavItem>
-      //                   <NavLink className="auth-button">
-      //                     <Button color="info" outline>
-      //                       <Link to={"/SignIn"}> Sign Up </Link>
-      //                     </Button>
-      //                   </NavLink>
-      //                 </NavItem>
-      //               </Nav>
-      //             </div>
-      //           </div>
-      //         </Collapse>
-      //       </div>
-      //     </div>
-      //   </div>
-      // </Navbar>
+    
     );
   }
 }
