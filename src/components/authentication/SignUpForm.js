@@ -161,6 +161,21 @@ class SignUpForm extends Component {
               <option value="5">Physics</option>
             </Input>
           </div>
+          <div className="FormField role">
+            <label className="FormField__Label" htmlFor="role">
+              Role
+            </label>
+            <Input
+              type="select"
+              name="role_id"
+              id="role"
+              onChange={this.handleChange}
+              className="FormField_Input"
+            >
+              <option value="1">Student</option>
+              <option value="2">Professor</option>
+            </Input>
+          </div>
           <div className="FormField">
             <label className="FormField__CheckboxLabel">
               <input
