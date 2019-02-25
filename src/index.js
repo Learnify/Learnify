@@ -1,7 +1,10 @@
 //Dependencies
+import Landing from "./components/landing/Lading";
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
+import { PersistGate } from 'redux-persist/lib/integration/react';
+// import { store, persistor } from "./redux/store/index.js";
 import store from "./redux/store/index.js";
 import { Router } from "react-router-dom";
 import App from "./components/App.js";
@@ -21,7 +24,9 @@ import registerServiceWorker from "./registerServiceWorker";
 render(
   <Router history={history}>
     <Provider store={store}>
+      {/* <PersistGate loading={<Landing />} persistor={persistor}> */}
       <AppRoutes />
+      {/* </PersistGate> */}
     </Provider>
   </Router>,
   document.getElementById("root")
