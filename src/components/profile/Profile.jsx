@@ -20,8 +20,6 @@ class Profile extends Component {
   }
 
   render() {
-    const token = this.props.auth_token;
-
     return (
       <div className="container emp-profile">
         <form method="post">
@@ -123,10 +121,13 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state) {
-  const { auth_token } = state.authentication.user;
-  return {
-    auth_token
-  };
+  if (state.authentication) {
+    const auth_token = state.auth_token;
+    if (auth_token) {
+      return { auth_token };
+    }
+  }
+  return {};
 }
 
 const connectedProfilePage = connect(mapStateToProps)(Profile);

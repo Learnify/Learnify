@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
 import { persistStore, persistReducer } from 'redux-persist';
+import { saveState } from "./localStorage";
 import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import rootReducer from "../reducers/index";
@@ -16,5 +17,12 @@ const pReducer = persistReducer(persistConfig, rootReducer);
 // export const persistor = persistStore(store);
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+
+store.subscribe(() => {
+  console.log("called");
+  saveState({
+    auth_token: store.getState().auth_token
+  });
+});
 
 export default store;

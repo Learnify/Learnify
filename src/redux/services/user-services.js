@@ -1,5 +1,6 @@
 import { authHeader } from "../helpers/auth-header";
 import { authAddress, signupAddress } from "../constants/back-address";
+import { removeState } from "../store/localStorage";
 
 export const userService = {
   login,
@@ -21,8 +22,6 @@ function login(email, password) {
   return fetch(authAddress, requestOptions)
     .then(handleResponse)
     .then(token => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem("token", JSON.stringify(token));
       // localStorage.setItem("token");
       return token;
     });
@@ -30,7 +29,7 @@ function login(email, password) {
 
 function logout() {
   // remove user from local storage to log user out
-  localStorage.removeItem("token");
+  removeState();
 }
 
 function getAll() {

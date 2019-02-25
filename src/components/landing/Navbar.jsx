@@ -29,7 +29,8 @@ class NavBar extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
-      redirect: false
+      redirect: false,
+      loggedIn: false
     };
   }
 
@@ -41,31 +42,35 @@ class NavBar extends Component {
 
   handleSubmitSearch = e => {
     e.preventDefault();
-    if(e.target[0].value && e.target[0].value !== ""){
+
+    this.handleClick(e);
+
+    if (e.target[0].value && e.target[0].value !== "") {
       this.props.handleSearchResults(e);
     }
   };
-  
-  // handleSubmitLogOut(e){
-  //   e.preventDefault();
-    
-  //   const { dispatch } = this.props;
-  //   dispatch(userActions.logout());
 
-  //   console.log('Local Storage', localStorage);
-  // }
-  
-  state = {};
-  
+  handleClick = e => {
+    if (this.state.isOpen) {
+      this.setState(
+        { isOpen: false }
+      );
+    }
+  }
+
+  handleSession = loggedIn => {
+    this.setState({ loggedIn });
+  };
+
   render() {
-    const {redirect} = this.state;
-    if(redirect){
-      return <Redirect to="Results"/>
+    const { redirect } = this.state;
+    if (redirect) {
+      return <Redirect to="Results" />
     }
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top bg-light">
-        <Link className="navbar-brand txt-primary" to={"/"}>
+        <Link onClick={this.handleClick} className="navbar-brand txt-primary" to={"/"}>
           Learnify
         </Link>
         <button
@@ -83,40 +88,42 @@ class NavBar extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link className="nav-link txt-secondary" to={"/Contact"}>
+              <Link onClick={this.handleClick} className="nav-link txt-secondary" to={"/Contact"}>
                 Contact
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link txt-secondary" to={"/Blog"}>
+              <Link onClick={this.handleClick} className="nav-link txt-secondary" to={"/Blog"}>
                 Blog
               </Link>
             </li>
-            {!this.props.loggedIn && 
-            <li className="nav-item pr-sm-2"> 
-              <Link
-                className="nav-link txt-primary btn btn-outline-info auth-button"
-                to={"/LogIn"}
-              >
-                LogIn
+            {!this.props.loggedIn &&
+              <li className="nav-item pr-sm-2">
+                <Link
+                  onClick={this.handleClick}
+                  className="nav-link txt-primary btn btn-outline-info auth-button"
+                  to={"/LogIn"}
+                >
+                  LogIn
               </Link>
-            </li>
+              </li>
             }
-            {!this.props.loggedIn && 
-            <li className="nav-item">
-              <Link
-                className="nav-link txt-primary btn btn-outline-info auth-button"
-                to={"/SignIn"}
-              >
-                Sign Up
+            {!this.props.loggedIn &&
+              <li className="nav-item">
+                <Link
+                  onClick={this.handleClick}
+                  className="nav-link txt-primary btn btn-outline-info auth-button"
+                  to={"/SignIn"}
+                >
+                  Sign Up
               </Link>
-            </li>
+              </li>
             }
           </ul>
-          
+
           <form
             className="form-inline my-2 my-lg-0"
-            onSubmit={this.handleSubmitSearch} 
+            onSubmit={this.handleSubmitSearch}
           >
             <input
               className="form-control mr-sm-2"
@@ -129,6 +136,7 @@ class NavBar extends Component {
               className="txt-primary btn btn-outline-info my-2 my-sm-0"
               type="submit"
               id="search-btn"
+              onClick={this.handleClick}
             >
               Search
             </button>
@@ -139,8 +147,8 @@ class NavBar extends Component {
             </button>
           </form>
           {this.props.loggedIn && <form onSubmit={this.handleSubmitLogOut}>
-            <button 
-              className="txt-primary btn btn-outline-info my-2 my-sm-0" 
+            <button
+              className="txt-primary btn btn-outline-info my-2 my-sm-0"
               id="log-out"
             >
               LogOut
@@ -149,10 +157,11 @@ class NavBar extends Component {
         </div>
       </nav>
 
-    
+
     );
   }
 }
+
 function mapStateToProps(state) {
   const { loggedIn } = state.authentication;
   return {

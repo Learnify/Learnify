@@ -48,7 +48,7 @@ class SignUpForm extends Component {
 
     this.setState({ submitted: true });
 
-    if(!this.state.hasAgreed){
+    if (!this.state.hasAgreed) {
       return;
     }
 
@@ -191,10 +191,8 @@ class SignUpForm extends Component {
 }
 
 function mapStateToProps(state) {
-  const { registering } = state.registration;
-  return {
-    registering
-  };
+  // const { registering } = state.registration;
+  return {};
 }
 
 const connectedRegisterPage = connect(mapStateToProps)(SignUpForm);

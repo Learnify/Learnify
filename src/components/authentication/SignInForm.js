@@ -10,7 +10,6 @@ class SignInForm extends Component {
   constructor() {
     super();
 
-    console.log(this.props);
     if (this.props) {
       this.props.dispatch(userActions.logout());
     }
@@ -97,10 +96,8 @@ class SignInForm extends Component {
 }
 
 function mapStateToProps(state) {
-  const { loggingIn } = state.authentication;
-  return {
-    loggingIn
-  };
+  // const { loggingIn } = state.authentication;
+  return {};
 }
 
 const connectedLoginPage = connect(mapStateToProps)(SignInForm);

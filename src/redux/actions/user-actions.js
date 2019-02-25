@@ -19,7 +19,7 @@ function login(email, password) {
       token => {
         // console.log(token);
         dispatch(success(token));
-        // history.push("/Profile");
+        history.push("/Profile");
       },
       error => {
         console.log(error);
