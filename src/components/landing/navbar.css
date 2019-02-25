@@ -21,9 +21,14 @@
 #log-out{
   margin-left: 0.5%;
 }
+.icon-search{
+  display: none !important;
+  color: #66FCF1;
+  background: none;
+}
 @media screen and (max-width: 990px) {
  .nav-item .btn, #log-out{
-   min-width: 20%;
+   min-width: 35%;
    margin-right: 80%;
    margin-left: 0%;
    margin-top: 0% !important;
@@ -31,7 +36,20 @@
    padding-top: 0.5%;
    padding-bottom: 0.5%;
  }
- #search-form{
+ #search-input{
+   float: left;
+   display: block;
+   max-width: 20%;
+   padding: 0 0 0 0;
+   text-align: center;
+ }
+ #search-btn{
    display: none;
+ }
+ .icon-search{
+   min-width: 12%;
+   float: right;
+   margin-left: 2%;
+   display: block !important;
  }
 }

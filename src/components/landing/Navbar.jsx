@@ -18,6 +18,7 @@ import {
 
 import { Link, Redirect, Switch } from "react-router-dom";
 import "./navbar.css";
+import "../../styles/fontello.css"
 
 class NavBar extends Component {
   constructor(props) {
@@ -102,19 +103,26 @@ class NavBar extends Component {
           
           <form
             className="form-inline my-2 my-lg-0"
-            onSubmit={this.handleSubmitSearch} id="search-form"
+            onSubmit={this.handleSubmitSearch} 
           >
             <input
               className="form-control mr-sm-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
+              id="search-input"
             />
             <button
               className="txt-primary btn btn-outline-info my-2 my-sm-0"
               type="submit"
+              id="search-btn"
             >
               Search
+            </button>
+            <button className="txt-primary btn btn-outline-info icon-search"
+              type="submit"
+              id="search-btn"
+            >
             </button>
           </form>
           <button className="txt-primary btn btn-outline-info my-2 my-sm-0" id="log-out">
