@@ -11,9 +11,10 @@
     "react-dom": "^16.7.0",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5",
+    "react-scripts": "^2.1.5",
     "reactstrap": "^6.5.0",
     "redux": "^4.0.1",
+    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -25,5 +26,11 @@
   "devDependencies": {
     "case-sensitive-paths-webpack-plugin": "^2.1.2",
     "react-social-icons": "^3.1.0"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

@@ -55,12 +55,15 @@ function register(user) {
 
   const { email, password, password_confirmation, firstname, lastname, career_id, role_id } = user;
   const newUser = {
-    name: firstname,
-    last_name: lastname,
-    email,
-    password_digest: password,
-    role_id,
-    career_id
+    user: {
+      name: firstname,
+      last_name: lastname,
+      email,
+      password: password,
+      password_confirmation: password_confirmation,
+      role_id,
+      career_id
+    }
   };
 
   const admin = {
