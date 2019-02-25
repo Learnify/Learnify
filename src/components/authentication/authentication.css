@@ -8,57 +8,6 @@
   background: #1F2833;
   box-shadow: 0 0 10px 0  #45A29E;
 }
-/* .PageSwitcher {
-  margin-bottom: 10%;
-}
-.PageSwitcher__Item {
-  background-color: #4c5d72;
-  color: #000000;
-  padding: 10px 25px;
-  cursor: pointer;
-  font-size: 0.9em;
-  border: none;
-  outline: none;
-  display: inline-block;
-  text-decoration: none;
-}
-
-.PageSwitcher__Item--Active {
-  background-color: #4dd0e1;
-  color: black;
-}
-
-.PageSwitcher__Item:first-child {
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-}
-.PageSwitcher__Item:last-child {
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-} */
-/* .FormTitle {
-  color: #707c8b; 
-  font-weight: 300;
-  margin-bottom: 50px;
-} */
-/* 
-.FormTitle__Link {
-  color: #707c8b;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 1.7em;
-  margin: 0 10px;
-  padding-bottom: 5px;
-}
-
-.FormTitle__Link:first-child {
-  margin-left: 0;
-}
-
-.FormTitle__Link--Active {
-  color: black;
-  border-bottom: 1px solid #4dd0e1;
-} */
 
 .FormField {
   margin-bottom: 2%;

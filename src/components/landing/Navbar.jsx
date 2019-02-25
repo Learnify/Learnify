@@ -17,6 +17,8 @@ import {
 } from "reactstrap";
 
 import { Link, Redirect, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import { userActions } from "../../redux/actions/user-actions";
 import "./navbar.css";
 import "../../styles/fontello.css"
 
@@ -43,11 +45,20 @@ class NavBar extends Component {
       this.props.handleSearchResults(e);
     }
   };
+  
+  // handleSubmitLogOut(e){
+  //   e.preventDefault();
+    
+  //   const { dispatch } = this.props;
+  //   dispatch(userActions.logout());
 
+  //   console.log('Local Storage', localStorage);
+  // }
+  
   state = {};
+  
   render() {
     const {redirect} = this.state;
-
     if(redirect){
       return <Redirect to="Results"/>
     }
@@ -81,7 +92,7 @@ class NavBar extends Component {
                 Blog
               </Link>
             </li>
-            
+            {!this.props.loggedIn && 
             <li className="nav-item pr-sm-2"> 
               <Link
                 className="nav-link txt-primary btn btn-outline-info auth-button"
@@ -90,7 +101,8 @@ class NavBar extends Component {
                 LogIn
               </Link>
             </li>
-            
+            }
+            {!this.props.loggedIn && 
             <li className="nav-item">
               <Link
                 className="nav-link txt-primary btn btn-outline-info auth-button"
@@ -99,6 +111,7 @@ class NavBar extends Component {
                 Sign Up
               </Link>
             </li>
+            }
           </ul>
           
           <form
@@ -125,9 +138,14 @@ class NavBar extends Component {
             >
             </button>
           </form>
-          <button className="txt-primary btn btn-outline-info my-2 my-sm-0" id="log-out">
-            LogOut
-          </button>
+          {this.props.loggedIn && <form onSubmit={this.handleSubmitLogOut}>
+            <button 
+              className="txt-primary btn btn-outline-info my-2 my-sm-0" 
+              id="log-out"
+            >
+              LogOut
+            </button>
+          </form>}
         </div>
       </nav>
 
@@ -135,5 +153,13 @@ class NavBar extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  const { loggedIn } = state.authentication;
+  return {
+    loggedIn
+  };
+}
 
-export default NavBar;
+const connectedNavBar = connect(mapStateToProps)(NavBar);
+export default connectedNavBar;
+
