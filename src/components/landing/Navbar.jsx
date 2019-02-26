@@ -43,20 +43,11 @@ class NavBar extends Component {
   handleSubmitSearch = e => {
     e.preventDefault();
 
-    this.handleClick(e);
 
     if (e.target[0].value && e.target[0].value !== "") {
       this.props.handleSearchResults(e);
     }
   };
-
-  handleClick = e => {
-    if (this.state.isOpen) {
-      this.setState(
-        { isOpen: false }
-      );
-    }
-  }
 
   handleSession = loggedIn => {
     this.setState({ loggedIn });
@@ -70,9 +61,12 @@ class NavBar extends Component {
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top bg-light">
-        <Link onClick={this.handleClick} className="navbar-brand txt-primary" to={"/"}>
-          Learnify
-        </Link>
+        <div data-toggle="collapse" data-target=".navbar-collapse.show">
+          <Link className="navbar-brand txt-primary" to={"/"}>
+            Learnify
+          </Link>
+        </div>
+       
         <button
           className="navbar-toggler"
           type="button"
@@ -86,21 +80,20 @@ class NavBar extends Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
+          <ul className="navbar-nav mr-auto" data-toggle="collapse" data-target=".navbar-collapse.show">
             <li className="nav-item">
-              <Link onClick={this.handleClick} className="nav-link txt-secondary" to={"/Contact"}>
+              <Link className="nav-link txt-secondary" to={"/Contact"}>
                 Contact
               </Link>
             </li>
             <li className="nav-item">
-              <Link onClick={this.handleClick} className="nav-link txt-secondary" to={"/Blog"}>
+              <Link className="nav-link txt-secondary" to={"/Blog"}>
                 Blog
               </Link>
             </li>
             {!this.props.loggedIn &&
               <li className="nav-item pr-sm-2">
                 <Link
-                  onClick={this.handleClick}
                   className="nav-link txt-primary btn btn-outline-info auth-button"
                   to={"/LogIn"}
                 >
@@ -108,10 +101,11 @@ class NavBar extends Component {
               </Link>
               </li>
             }
-            {!this.props.loggedIn &&
+            {console.log(this.props)}
+            { 
+              !this.props.loggedIn &&
               <li className="nav-item">
                 <Link
-                  onClick={this.handleClick}
                   className="nav-link txt-primary btn btn-outline-info auth-button"
                   to={"/SignIn"}
                 >
@@ -143,6 +137,7 @@ class NavBar extends Component {
             <button className="txt-primary btn btn-outline-info icon-search"
               type="submit"
               id="search-btn"
+              data-toggle="collapse" data-target=".navbar-collapse.show"
             >
             </button>
           </form>
