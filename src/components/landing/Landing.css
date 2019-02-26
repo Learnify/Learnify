@@ -15,12 +15,13 @@
 
 .landing h1{ 
     color:#45A29E;
-    font-size: 100px;
+    font-size: 12vw;
     font-family: "Raleway";
 }
 
 .main{
     text-align: center;
+    font-size: 2vw;
     margin-top: 6%;
     margin-left: 10%;
     margin-right: 10%;
