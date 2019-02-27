@@ -16,9 +16,12 @@ function login(email, password) {
     dispatch(request({ email }));
 
     userService.login(email, password).then(
-      token => {
-        // console.log(token);
-        dispatch(success(token));
+      response => {
+        const user = {
+          auth_token: response.auth_token,
+          id: response.user.id
+        };
+        dispatch(success(user));
         history.push("/Profile");
       },
       error => {

@@ -63,7 +63,7 @@ class NavBar extends Component {
   };
 
   handleSessionChange = () => {
-    console.log("subscribed");
+    // console.log("subscribed");
   };
 
   render() {

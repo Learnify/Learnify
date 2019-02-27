@@ -46,7 +46,6 @@ const loadLoggedIn = () => {
     return serializedToken;
   }
   catch (err) {
-    console.log(err);
     return undefined;
   }
 };

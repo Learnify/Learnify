@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { userActions } from "../../redux/actions/user-actions";
+import { userService } from "../../redux/services/user-services";
 import { connect } from "react-redux";
 
 import "./Profile.css";
@@ -9,14 +10,30 @@ class Profile extends Component {
   constructor() {
     super();
 
-    // console.log();
     this.state = {
-
+      name: "",
+      last_name: "",
+      email: "",
+      since: "",
+      career_id: ""
     };
   }
 
   componentWillMount() {
     this.props.dispatch(userActions.getAll());
+    this.getUserData();
+  }
+
+  async getUserData() {
+    const user = await userService.getById(this.props.user.id, this.props.user.auth_token);
+    this.setUserData(user);
+  }
+
+  setUserData(user) {
+    this.setState({
+      name: `${user.name} ${user.last_name}`,
+      email: user.email
+    });
   }
 
   render() {
@@ -32,8 +49,8 @@ class Profile extends Component {
             <div className="col-md-8">
               <div className="profile-head">
                 <h2>
-                  Nicolás Viveros
-                  </h2>
+                  {this.state.name}
+                </h2>
                 <p>Male. Bogotá D.C. Colombia</p>
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item col-md-6">
@@ -49,9 +66,9 @@ class Profile extends Component {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-work">
-                <h4>Nicolás Viveros</h4>
+                <h4>{this.state.name}</h4>
                 <ul>
-                  <li><b>Email:</b><br />nviverosb@unal.edu.co</li>
+                  <li><b>Email:</b><br />{this.state.email}</li>
                   <li><b>Member Since:</b><br />17 Sep 2018</li>
                   <li><b>Billing Cicle:</b><br />14 Oct 2018</li>
                 </ul>
@@ -121,10 +138,10 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state) {
-  if (state.authentication) {
-    const auth_token = state.auth_token;
-    if (auth_token) {
-      return { auth_token };
+  if (state.authentication.user) {
+    const user = state.authentication.user;
+    if (user) {
+      return { user };
     }
   }
   return {};

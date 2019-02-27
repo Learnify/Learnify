@@ -1,5 +1,5 @@
-import { authHeader } from "../helpers/auth-header";
-import { authAddress, signupAddress } from "../constants/back-address";
+import { authHeader, userHeader } from "../helpers/auth-header";
+import { authAddress, signupAddress, profileAddress } from "../constants/back-address";
 import { removeState } from "../store/localStorage";
 
 export const userService = {
@@ -41,13 +41,15 @@ function getAll() {
   return fetch(`/users`, requestOptions).then(handleResponse);
 }
 
-function getById(id) {
+function getById(id, token) {
   const requestOptions = {
     method: "GET",
-    headers: authHeader()
+    headers: userHeader(token)
   };
 
-  return fetch(`/users/${id}`, requestOptions).then(handleResponse);
+  return fetch(`${profileAddress}/${id}`, requestOptions).then(handleResponse).then(response => {
+    return response;
+  });
 }
 
 function register(user) {
