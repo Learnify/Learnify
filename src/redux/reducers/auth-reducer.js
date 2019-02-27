@@ -1,7 +1,7 @@
 import { userConstants } from "../constants/types";
-import { loadState } from "../store/localStorage";
+import { loadState, loadAuthReducer } from "../store/localStorage";
 
-const initialState = loadState();
+const initialState = loadAuthReducer();
 
 export function authentication(state = initialState, action) {
   switch (action.type) {

@@ -28,7 +28,6 @@ class NavBar extends Component {
     super(props);
 
     store.subscribe(() => {
-      console.log("Ola k ase");
       this.handleSessionChange();
     });
 
@@ -80,7 +79,7 @@ class NavBar extends Component {
             Learnify
           </Link>
         </div>
-       
+
         <button
           className="navbar-toggler"
           type="button"
@@ -115,7 +114,7 @@ class NavBar extends Component {
               </Link>
               </li>
             }
-            { 
+            {
               !this.props.loggedIn &&
               <li className="nav-item">
                 <Link

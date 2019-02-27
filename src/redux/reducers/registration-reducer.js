@@ -1,6 +1,9 @@
 import { userConstants } from "../constants/types";
+import { loadRegistrationReducer } from "../store/localStorage";
 
-export function registration(state = {}, action) {
+const initialState = loadRegistrationReducer();
+
+export function registration(state = initialState, action) {
   switch (action.type) {
     case userConstants.REGISTER_REQUEST:
       return { registering: true };

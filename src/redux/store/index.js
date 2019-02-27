@@ -19,9 +19,7 @@ const pReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 store.subscribe(() => {
-  saveState({
-    auth_token: store.getState().auth_token
-  });
+  saveState(store.getState());
 });
 
 export default store;

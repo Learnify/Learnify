@@ -20,9 +20,6 @@ import AppRoutes from "./routes";
 // import './styles/index.css';
 import registerServiceWorker from "./registerServiceWorker";
 
-
-clearLocalStorage();
-
 // configureFakeBackend();
 
 render(
