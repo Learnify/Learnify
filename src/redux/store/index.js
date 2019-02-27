@@ -19,7 +19,6 @@ const pReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 store.subscribe(() => {
-  console.log("called");
   saveState({
     auth_token: store.getState().auth_token
   });

@@ -6,7 +6,7 @@ const auth_token = loadState();
 
 export const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
-    auth_token !== {}
+    loadState().auth_token
       ? <Component {...props} />
       : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
   )} />

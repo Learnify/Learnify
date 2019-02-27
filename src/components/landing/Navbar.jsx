@@ -19,12 +19,18 @@ import {
 import { Link, Redirect, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { userActions } from "../../redux/actions/user-actions";
+import store from "../../redux/store/index";
 import "./navbar.css";
 import "../../styles/fontello.css"
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
+
+    store.subscribe(() => {
+      console.log("Ola k ase");
+      this.handleSessionChange();
+    });
 
     this.toggle = this.toggle.bind(this);
     this.state = {
@@ -51,6 +57,14 @@ class NavBar extends Component {
 
   handleSession = loggedIn => {
     this.setState({ loggedIn });
+  };
+
+  handleSubmitLogOut = () => {
+    userActions.logout();
+  };
+
+  handleSessionChange = () => {
+    console.log("subscribed");
   };
 
   render() {
@@ -101,7 +115,6 @@ class NavBar extends Component {
               </Link>
               </li>
             }
-            {console.log(this.props)}
             { 
               !this.props.loggedIn &&
               <li className="nav-item">

@@ -11,6 +11,7 @@ import App from "./components/App.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { configureFakeBackend } from "./redux/helpers/fake-backend";
 import { history } from "./redux/helpers/history";
+import { clearLocalStorage } from "./redux/store/localStorage";
 
 //Routes
 import AppRoutes from "./routes";
@@ -18,6 +19,9 @@ import AppRoutes from "./routes";
 //Assets
 // import './styles/index.css';
 import registerServiceWorker from "./registerServiceWorker";
+
+
+clearLocalStorage();
 
 // configureFakeBackend();
 

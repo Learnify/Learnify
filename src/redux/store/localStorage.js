@@ -30,4 +30,8 @@ const removeState = () => {
   }
 };
 
-export { loadState, saveState, removeState };
+const clearLocalStorage = () => {
+  localStorage.clear();
+};
+
+export { loadState, saveState, removeState, clearLocalStorage };
