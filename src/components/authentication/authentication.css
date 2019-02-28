@@ -53,9 +53,8 @@
   border: none;
   outline: none;
   border-radius: 25px;
-  padding: 15px 70px;
+  padding: 2% 10%;
   font-size: 0.8em;
-  font-weight: 500;
 }
 
 .FormField__Alert {
@@ -101,10 +100,9 @@
 }
 
 .career {
-  padding-left: 35% !important;
-  padding-right: 35% !important;
-}
-.role {
-  padding-left: 35% !important;
-  padding-right: 35% !important;
+  justify-content: center;
+  padding: 1% 1% 1% 1% !important;
+  min-width: 20%;
+  color: #C5C6C7;
+  border-color: #66FCF1;
 }

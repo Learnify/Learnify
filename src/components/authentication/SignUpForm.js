@@ -147,19 +147,18 @@ class SignUpForm extends Component {
             <label className="FormField__Label" htmlFor="career">
               Career
             </label>
-            <Input
-              type="select"
+            <select
               name="career_id"
               id="career"
               onChange={this.handleChange}
-              className="FormField_Input"
+              className="btn btn-outline-info career"
             >
               <option value="1">Engineering</option>
               <option value="2">Medicine</option>
               <option value="3">Architecture</option>
               <option value="4">Music</option>
               <option value="5">Physics</option>
-            </Input>
+            </select>
           </div>
           <div className="FormField">
             <label className="FormField__CheckboxLabel">
@@ -179,7 +178,7 @@ class SignUpForm extends Component {
           </div>
 
           <div className="FormField">
-            <button className="FormField__Button mr-20">Sign Up</button>{" "}
+            <button className="FormField__Button">Sign Up</button>{" "}
             <Link to="/LogIn" className="FormField__Link">
               I'm already member
             </Link>
