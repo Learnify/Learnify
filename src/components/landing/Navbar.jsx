@@ -153,7 +153,6 @@ class NavBar extends Component {
             </button>
             <button className="txt-primary btn btn-outline-info icon-search"
               type="submit"
-              id="search-btn"
               data-toggle="collapse" data-target=".navbar-collapse.show"
             >
             </button>
