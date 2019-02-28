@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import { SocialIcon } from "react-social-icons";
 import "./Content.css";
 
@@ -18,9 +19,6 @@ class Footer extends Component {
                     <Link className="link-text" to={"/"}>Home</Link>
                   </li>
                   <li>
-                    <Link className="link-text" to={"/About"}>About</Link>
-                  </li>
-                  <li>
                     <Link className="link-text" to={"/Blog"}>Blog</Link>
                   </li>
                   <li>
@@ -28,7 +26,7 @@ class Footer extends Component {
                   </li>
                 </ul>
               </div>
-              <div className="col-7 col-sm-5">
+              {!this.props.loggedIn && <div className="col-7 col-sm-5">
                 <h5>Sign Up</h5>
                 <ul className="list-unstyled">
                   <li>
@@ -38,7 +36,7 @@ class Footer extends Component {
                     <Link className="link-text" to={"/SignIn"}>Sign Up</Link>
                   </li>
                 </ul>
-              </div>
+              </div>}
               <div className="col-12 col-sm-4 align-self">
                 <h5>Get in touch</h5>
                 <span className="social-icon">
@@ -74,4 +72,12 @@ class Footer extends Component {
   }
 }
 
-export default Footer;
+function mapStateToProps(state) {
+  const { loggedIn } = state.authentication;
+  return {
+    loggedIn
+  };
+}
+
+const connectedFooter = connect(mapStateToProps)(Footer);
+export default connectedFooter;

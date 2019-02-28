@@ -94,6 +94,11 @@ class NavBar extends Component {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto" data-toggle="collapse" data-target=".navbar-collapse.show">
+            {this.props.loggedIn && <li className="nav-item">
+              <Link className="nav-link txt-secondary" to={"/Profile"}>
+                Profile
+              </Link>
+            </li>}
             <li className="nav-item">
               <Link className="nav-link txt-secondary" to={"/Contact"}>
                 Contact
