@@ -1,3 +1,7 @@
+.App__Form{
+  min-height: 500px;
+}
+
 .FormCenter{
   max-width: 60%;
   margin-left: 20%;
@@ -35,7 +39,6 @@
   outline: none;
   border-bottom: 1px solid #445366;
   font-size: 1em;
-  font-weight: 300;
   padding-bottom: 10px;
   margin-top: 10px;
 }

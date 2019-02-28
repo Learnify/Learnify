@@ -73,7 +73,7 @@ class NavBar extends Component {
     }
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top bg-light">
+      <nav className="navbar navbar-expand-lg">
         <div data-toggle="collapse" data-target=".navbar-collapse.show">
           <Link className="navbar-brand txt-primary" to={"/"}>
             Learnify
@@ -89,7 +89,7 @@ class NavBar extends Component {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon" />
+          <span className="icon-menu" />
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">

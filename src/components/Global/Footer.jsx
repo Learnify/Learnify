@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { SocialIcon } from "react-social-icons";
-import "./Content.css";
+import "./Footer.css";
 
 class Footer extends Component {
   render() {

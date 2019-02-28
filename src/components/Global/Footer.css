@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,300i,400,500,600,700");
+
+footer .container{
+  min-width: 100%;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  bottom: 0;
+}
+.footer{
+  width: 100%;
+  color: #C5C6C7;
+  padding-top: 2%;
+  background: -webkit-linear-gradient(top, #0B0C10, #1F2833);
+}
+.list-unstyled{
+  text-align: center;
+}
+.link-text{
+  color: #45A29E;
+  text-decoration: none !important;
+}
+.link-text:hover{
+  color: #66FCF1;
+}
+.content{
+  color: #C5C6C7;
+}
+.social-icon {
+  padding: 10px;
+}
+.learnify-footer{
+  padding-bottom: 2%;
+}
