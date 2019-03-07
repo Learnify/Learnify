@@ -8,13 +8,36 @@ import { connect } from "react-redux";
 
 class ResultPage extends Component {
 
+    constructor() {
+        super();
+
+        this.state = {
+            tutors: "",
+            subjects: ""
+        };
+    }
+
+
     componentWillMount() {
         this.getSubjectData();
+        this.getProfessorData();
     }
 
     async getSubjectData() {
         // const user = await userService.getSubjects(this.props.location.searchTerm, this.props.user.auth_token);
         // console.log(user);
+    }
+
+    async getProfessorData() {
+        const user = await userService.getProfessors(this.props.location.searchTerm, this.props.user.auth_token);
+
+        this.setState({
+            tutors: {
+                ...user
+            }
+        });
+
+        console.log(this.state);
     }
 
     render() {
