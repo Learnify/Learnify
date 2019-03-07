@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { extractDate } from "../../utils/date-extractor";
 import { userActions } from "../../redux/actions/user-actions";
 import { userService } from "../../redux/services/user-services";
 import { connect } from "react-redux";
@@ -14,8 +15,9 @@ class Profile extends Component {
       name: "",
       last_name: "",
       email: "",
-      since: "",
-      career_id: ""
+      created_at: "",
+      career: "",
+      role: ""
     };
   }
 
@@ -30,9 +32,14 @@ class Profile extends Component {
   }
 
   setUserData(user) {
+    const date = extractDate(user.created_at);
+    const joinedDate = `${date.day} ${date.month.substring(0, 3)} ${date.year}`;
     this.setState({
       name: `${user.name} ${user.last_name}`,
-      email: user.email
+      email: user.email,
+      created_at: joinedDate,
+      career: user.career,
+      role: user.role
     });
   }
 
@@ -69,8 +76,8 @@ class Profile extends Component {
                 <h4>{this.state.name}</h4>
                 <ul>
                   <li><b>Email:</b><br />{this.state.email}</li>
-                  <li><b>Member Since:</b><br />17 Sep 2018</li>
-                  <li><b>Billing Cicle:</b><br />14 Oct 2018</li>
+                  <li><b>Member Since:</b><br />{this.state.created_at}</li>
+                  <li><b>Career:</b><br />{this.state.career.name}</li>
                 </ul>
               </div>
             </div>

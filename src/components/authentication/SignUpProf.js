@@ -17,7 +17,7 @@ class SignUpProf extends Component {
       firstname: "",
       lastname: "",
       career_id: 1,
-      role_id: 2,
+      role_id: 1,
       dropdownOpen: false,
       hasAgreed: false,
       submitted: false
@@ -48,7 +48,7 @@ class SignUpProf extends Component {
 
     this.setState({ submitted: true });
 
-    if(!this.state.hasAgreed){
+    if (!this.state.hasAgreed) {
       return;
     }
 

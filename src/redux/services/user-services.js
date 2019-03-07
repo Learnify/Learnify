@@ -1,5 +1,5 @@
-import { authHeader, userHeader } from "../helpers/auth-header";
-import { authAddress, signupAddress, profileAddress } from "../constants/back-address";
+import { authHeader, userHeader, searchHeader } from "../helpers/auth-header";
+import { authAddress, signupAddress, profileAddress, subjectAddress } from "../constants/back-address";
 import { removeState } from "../store/localStorage";
 
 export const userService = {
@@ -9,6 +9,7 @@ export const userService = {
   getAll,
   getById,
   update,
+  getSubjects,
   delete: _delete
 };
 
@@ -48,6 +49,24 @@ function getById(id, token) {
   };
 
   return fetch(`${profileAddress}/${id}`, requestOptions).then(handleResponse).then(response => {
+    return response;
+  });
+}
+
+function getSubjects(name, token) {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Authorization": token,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      name: `%${name}%`
+    })
+  };
+
+  return fetch(`${subjectAddress}`, requestOptions).then(handleResponse).then(response => {
+    console.log(response + "    RESPUESTA");
     return response;
   });
 }

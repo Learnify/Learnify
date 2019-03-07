@@ -2,9 +2,20 @@ import React, { Component } from 'react';
 import { Button } from "reactstrap";
 import Tutor from "./TutorResult";
 import Subject from "./SubjectResult";
+import { userService } from "../../redux/services/user-services";
 import "./search-styles.css";
+import { connect } from "react-redux";
 
 class ResultPage extends Component {
+
+    componentWillMount() {
+        this.getSubjectData();
+    }
+
+    async getSubjectData() {
+        // const user = await userService.getSubjects(this.props.location.searchTerm, this.props.user.auth_token);
+        // console.log(user);
+    }
 
     render() {
 
@@ -187,4 +198,15 @@ const subjects = [
 
 const citation = (<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>);
 
-export default ResultPage;
+function mapStateToProps(state) {
+    if (state.authentication.user) {
+        const user = state.authentication.user;
+        if (user) {
+            return { user };
+        }
+    }
+    return {};
+}
+
+const connectedResultPage = connect(mapStateToProps)(ResultPage);
+export default connectedResultPage;

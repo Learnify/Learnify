@@ -17,4 +17,16 @@ function userHeader(token) {
   }
 }
 
-export { authHeader, userHeader };
+function searchHeader(token) {
+  if (token) {
+    return {
+      "Authorization": token,
+      "content-type": "application/json"
+    }
+  }
+  else {
+    return {};
+  }
+}
+
+export { authHeader, userHeader, searchHeader };

@@ -13,38 +13,38 @@ class Contact extends Component {
           <h2>SEND US AN EMAIL</h2>
           <div className="row">
             <div className="my-col">
-              <label for="name">
+              <label htmlFor="name">
                 Name
                 <small>*</small>
               </label>
-              <input type="text" id="name" placeholder="Name"/>
+              <input type="text" id="name" placeholder="Name" />
             </div>
             <div className="my-col">
               <label for="email">
                 Email
                 <small>*</small>
               </label>
-              <input type="my-text" id="email" placeholder="Email"/>
+              <input type="my-text" id="email" placeholder="Email" />
             </div>
             <div className="my-col">
               <label for="phone">
                 Phone
               </label>
-              <input type="text" id="phone" placeholder="Phone"/>
+              <input type="text" id="phone" placeholder="Phone" />
             </div>
             <div className="my-col" id="col-affair">
               <label for="affair">
                 Affair
                 <small>*</small>
               </label>
-              <input type="my-text" id="affair" placeholder="Affair"/>
+              <input type="my-text" id="affair" placeholder="Affair" />
             </div>
             <div className="my-col" id="col-message">
               <label for="message">
                 Message
                 <small>*</small>
               </label>
-              <textarea type="my-text" id="message" placeholder="Write your message here"/>
+              <textarea type="my-text" id="message" placeholder="Write your message here" />
             </div>
             <button className="btn btn-outline-info btn-send icon-paper-plane-empty"> Send</button>
           </div>
