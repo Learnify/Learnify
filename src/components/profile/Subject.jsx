@@ -4,9 +4,9 @@ import { userActions } from "../../redux/actions/user-actions";
 import { userService } from "../../redux/services/user-services";
 import { connect } from "react-redux";
 
-import "./Professor.css";
+import "./Subject.css";
 
-class Professor extends Component {
+class Subject extends Component {
 
   constructor() {
     super();
@@ -17,7 +17,8 @@ class Professor extends Component {
       email: "",
       created_at: "",
       career: "",
-      role: ""
+      role: "",
+      summary: ""
     };
   }
 
@@ -39,7 +40,8 @@ class Professor extends Component {
       email: user.email,
       created_at: joinedDate,
       career: user.career,
-      role: user.role
+      role: user.role,
+      summary: user.summary
     });
   }
 
@@ -48,47 +50,38 @@ class Professor extends Component {
     const listItems = data.map((d) => <li key={d.name}>{d.name}</li>);
     
     return (
-      <div className="container emp-Professor">
+      <div className="container emp-Subject">
         <form method="post">
           <div className="row">
             <div className="col-md-4">
-              <div className="Professor-img">
-                <img src="https://i1.rgstatic.net/ii/profile.image/272496691773460-1441979682657_Q512/Jairo_Aponte.jpg" alt="" />
+              <div className="Subject-img">
+                <img src="https://cdn5.vectorstock.com/i/1000x1000/22/19/personal-computer-icon-minimal-style-1-vector-1892219.jpg" alt="" />
               </div>
             </div>
             <div className="col-md-8">
-              <div className="Professor-head">
+              <div className="Subject-head">
                 <h2>
-                  Jairo Aponte
+                    Advanced Software Engineering
                 </h2>
-                <p>Professor of Software Development</p>
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item">
-                    <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Current Courses</a>
+                    <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Summary</a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
           <div className="row">
-            <div className="col-md-4">
-              <div className="Professor-work">
-                <h4>Jairo Aponte</h4>
-                <ul>
-                  <li><b>Email:</b><br />jhapontem@unal.edu.co</li>
-                  <li><b>Member Since:</b><br />{this.state.created_at}</li>
-                  <li><b>Career:</b><br />{this.state.career.name}</li>
-                </ul>
-              </div>
-            </div>
-            <div className="col-md-8">
-              <div className="tab-content Professor-tab" id="myTabContent">
+            <div className="col">
+              <div className="tab-content Subject-tab" id="myTabContent">
                 <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div className="row c-tutors">
-                    <li>Advanced Software Engineering</li>
-                    <li>Software Development II</li>
-                    <li>Advanced Software Engineering</li>
-                    <li>Advanced Software Engineering</li>
+                    <p>Software development is the process of conceiving, specifying, designing, programming, documenting, testing, and bug fixing involved
+                         in creating and maintaining applications, frameworks, or other software components. Software development is a process of writing and 
+                         maintaining the source code, but in a broader sense, it includes all that is involved between the conception of the desired software 
+                         through to the final manifestation of the software, sometimes in a planned and structured process. Therefore, software development 
+                         may include research, new development, prototyping, modification, reuse, re-engineering, maintenance, or any other activities that 
+                         result in software products.</p>
                   </div>                
                 </div>
               </div>
@@ -110,5 +103,5 @@ function mapStateToProps(state) {
   return {};
 }
 
-const connectedProfessorPage = connect(mapStateToProps)(Professor);
-export default connectedProfessorPage;
+const connectedSubjectPage = connect(mapStateToProps)(Subject);
+export default connectedSubjectPage;

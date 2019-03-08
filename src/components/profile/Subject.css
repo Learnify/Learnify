@@ -1,0 +1,72 @@
+.emp-Subject{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+    color: #000;
+}
+.Subject-img{
+    text-align: center;
+}
+.Subject-img img{
+    width: 70%;
+    height: 100%;
+    box-shadow: 0 0 10px 0  #0B0C10;
+    border-radius: 50%;
+}
+.Subject-head{
+    margin-top: 8%;
+}
+.Subject-head h2,p{
+    text-align: left;
+    color: #0B0C10;
+}
+.Subject-head .nav-tabs{
+    margin-top: 5%;
+}
+.Subject-head .nav-tabs .nav-link{
+    color: #45A29E;
+    font-weight:600;
+    border: none;
+}
+.Subject-head .nav-tabs .nav-link.active{
+    color: #0B0C10;
+    border: none;
+    border-bottom:2px solid #45A29E;
+}
+.Subject-work{
+    padding: 14%;
+    margin-top: -5%;
+}
+.Subject-work p{
+    font-size: 12px;
+    color: #0B0C10;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.Subject-work li{
+    color: #0B0C10;
+    font-weight: 600;
+    font-size: 14px;
+}
+.Subject-work b{
+    color: #45A29E;
+}
+.Subject-work ul{
+    list-style: none;
+}
+.c-tutors, .u-sessions{
+    margin-top: 2%;
+    border-bottom:1px solid #C5C6C7;
+}
+.Subject-tab label{
+    font-weight: 600;
+}
+.Subject-tab p{
+    font-weight: 500;
+    color:#000;
+    margin-bottom: 10%;
+    text-align: justify;
+
+}
