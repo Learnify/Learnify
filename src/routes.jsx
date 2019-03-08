@@ -6,6 +6,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import App from "./components/App";
 import Landing from "./components/landing/Lading";
 import Profile from "./components/profile/Profile";
+import Professor from "./components/profile/Professor";
 import Page404 from "./components/Page404";
 import SignInForm from "./components/authentication/SignInForm";
 import SignUpForm from "./components/authentication/SignUpForm";
@@ -31,6 +32,7 @@ const AppRouters = () => (
       <Route exact path="/Blog" component={Blog} />
       <Route exact path="/Results" component={ResultPage} />
       <Route exact path="/AddSubject" component={AddSubject} />
+      <Route exact path="/Professor" component={Professor} />
       <Route exact path="/" component={Landing} />
       {/* <Route exact path="/Profile" component={Profile} />  */}
       <Route exact path="/Changes" component={Admin} />
