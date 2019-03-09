@@ -16,7 +16,8 @@ class SignInForm extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      invalid: false
     };
 
     this.handleChange = this.handleChange.bind(this);

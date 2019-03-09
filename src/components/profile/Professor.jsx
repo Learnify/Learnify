@@ -22,31 +22,16 @@ class Professor extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(userActions.getAll());
     this.getUserData();
   }
 
   async getUserData() {
-    const user = await userService.getById(this.props.user.id, this.props.user.auth_token);
-    this.setUserData(user);
-  }
-
-  setUserData(user) {
-    const date = extractDate(user.created_at);
-    const joinedDate = `${date.day} ${date.month.substring(0, 3)} ${date.year}`;
-    this.setState({
-      name: `${user.name} ${user.last_name}`,
-      email: user.email,
-      created_at: joinedDate,
-      career: user.career,
-      role: user.role
-    });
   }
 
   render() {
-    const data =[{"name":"test1"},{"name":"test2"}];
+    const data = [{ "name": "test1" }, { "name": "test2" }];
     const listItems = data.map((d) => <li key={d.name}>{d.name}</li>);
-    
+
     return (
       <div className="container emp-Professor">
         <form method="post">
@@ -89,7 +74,7 @@ class Professor extends Component {
                     <li>Software Development II</li>
                     <li>Advanced Software Engineering</li>
                     <li>Advanced Software Engineering</li>
-                  </div>                
+                  </div>
                 </div>
               </div>
             </div>

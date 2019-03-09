@@ -12,6 +12,7 @@ import Page404 from "./components/Page404";
 import SignInForm from "./components/authentication/SignInForm";
 import SignUpForm from "./components/authentication/SignUpForm";
 import SignUpProf from "./components/authentication/SignUpProf";
+import Invalid from "./components/authentication/Invalid";
 import ChangePassword from "./components/authentication/ChangePassword";
 import Authentication from "./components/authentication/authentication";
 import Contact from "./components/contact/contact";
@@ -20,6 +21,7 @@ import Blog from "./components/blog/blog";
 import ResultPage from "./components/search/ResultPage";
 import AddSubject from "./components/add/add-subject";
 import { PrivateRoute } from "./components/private-route/PrivateRoute";
+import { PublicRoute } from "./components/private-route/PublicRoute";
 
 const AppRouters = () => (
   <App>
@@ -31,15 +33,18 @@ const AppRouters = () => (
       <Route exact path="/ChangePassword" component={ChangePassword} />
       <Route exact path="/Contact" component={Contact} />
       <Route exact path="/Blog" component={Blog} />
-      <Route exact path="/Results" component={ResultPage} />
+      {/* <Route exact path="/Results" component={ResultPage} /> */}
       <Route exact path="/AddSubject" component={AddSubject} />
-      <Route exact path="/Professor" component={Professor} />
-      <Route exact path="/Subject" component={Subject} />
+      {/* <Route exact path="/Professor" component={Professor} /> */}
+      {/* <Route exact path="/Subject" component={Subject} /> */}
       <Route exact path="/" component={Landing} />
       {/* <Route exact path="/Profile" component={Profile} />  */}
       <Route exact path="/Changes" component={Admin} />
       <PrivateRoute exact path='/Profile' component={Profile} />
-      {/* <PrivateRoute exact path='/Results' component={ResultPage} /> */}
+      <PrivateRoute exact path='/Results' component={ResultPage} />
+      <PrivateRoute exact path='/Professor' component={Professor} />
+      <PrivateRoute exact path='/Subject' component={Subject} />
+      <PublicRoute exact path='/Invalid' component={Invalid} />
       <Route component={Page404} />
     </Switch>
   </App>

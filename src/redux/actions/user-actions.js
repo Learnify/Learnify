@@ -25,7 +25,7 @@ function login(email, password) {
         history.push("/Profile");
       },
       error => {
-        console.log(error);
+        history.push("/Invalid");
         dispatch(failure(error));
         dispatch(alertActions.error(error));
       }
