@@ -17,7 +17,7 @@ class SignUpForm extends Component {
       firstname: "",
       lastname: "",
       career_id: 1,
-      role_id: 1,
+      role_id: 2,
       dropdownOpen: false,
       hasAgreed: false,
       submitted: false

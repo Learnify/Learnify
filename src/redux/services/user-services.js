@@ -1,5 +1,5 @@
 import { authHeader, userHeader, searchHeader } from "../helpers/auth-header";
-import { authAddress, signupAddress, profileAddress, subjectAddress, professorAddress } from "../constants/back-address";
+import { authAddress, signupAddress, profileAddress, subjectAddress, professorAddress, professorSubjectAddress } from "../constants/back-address";
 import { removeState } from "../store/localStorage";
 
 export const userService = {
@@ -11,6 +11,7 @@ export const userService = {
   update,
   getSubjects,
   getProfessors,
+  getProfessorSubjects,
   delete: _delete
 };
 
@@ -54,15 +55,15 @@ function getById(id, token) {
   });
 }
 
-function getProfessors(name, token) {
+function getProfessors(name) {
   const requestOptionsName = {
     method: "POST",
     headers: {
-      "Authorization": token,
       "content-type": "application/json"
     },
     body: JSON.stringify({
-      name: `%${name}%`
+      name: `%${name}%`,
+      last_name: `%${name}%`
     })
   };
 
@@ -71,11 +72,10 @@ function getProfessors(name, token) {
   });
 }
 
-function getSubjects(name, token) {
+function getSubjects(name) {
   const requestOptions = {
     method: "POST",
     headers: {
-      "Authorization": token,
       "content-type": "application/json"
     },
     body: JSON.stringify({
@@ -84,7 +84,15 @@ function getSubjects(name, token) {
   };
 
   return fetch(`${subjectAddress}`, requestOptions).then(handleResponse).then(response => {
-    console.log(response + "    RESPUESTA");
+    return response;
+  });
+}
+
+function getProfessorSubjects(id) {
+  const requestOptions = {
+    method: "GET",
+  };
+  return fetch(`${professorSubjectAddress}/${id}`, requestOptions).then(handleResponse).then(response => {
     return response;
   });
 }

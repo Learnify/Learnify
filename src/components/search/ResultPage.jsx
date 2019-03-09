@@ -3,6 +3,7 @@ import { Button } from "reactstrap";
 import Tutor from "./TutorResult";
 import Subject from "./SubjectResult";
 import { userService } from "../../redux/services/user-services";
+import { Redirect } from 'react-router-dom';
 import "./search-styles.css";
 import { connect } from "react-redux";
 
@@ -10,13 +11,12 @@ class ResultPage extends Component {
 
     constructor() {
         super();
-
         this.state = {
-            tutors: "",
-            subjects: ""
+            tutors: { 0: "No existe el profesor" },
+            subjects: { 0: "No existe el profesor" },
+            loading: false
         };
     }
-
 
     componentWillMount() {
         this.getSubjectData();
@@ -24,31 +24,48 @@ class ResultPage extends Component {
     }
 
     async getSubjectData() {
-        // const user = await userService.getSubjects(this.props.location.searchTerm, this.props.user.auth_token);
-        // console.log(user);
+        this.setState({ loading: true });
+        const subjectList = await userService.getSubjects(this.props.location.searchTerm);
+        this.setState({
+            subjects: {
+                ...subjectList
+            }
+        });
+        // console.log(this.state);
+        this.setState({ loading: false });
     }
 
     async getProfessorData() {
-        const user = await userService.getProfessors(this.props.location.searchTerm, this.props.user.auth_token);
-
+        this.setState({ loading: true });
+        const user = await userService.getProfessors(this.props.location.searchTerm);
         this.setState({
             tutors: {
                 ...user
             }
         });
-
-        console.log(this.state);
+        // console.log(this.state);
+        this.setState({ loading: false });
     }
 
     render() {
 
         const searchTerm = this.props.location.searchTerm;
         if (!searchTerm) {
-            return (<div>Nothing to render here</div>);
+            return (<Redirect to={{ pathname: '/' }} />);
         }
 
-        const tutorResults = tutors.filter(tutor => tutor.name.toLowerCase().includes(searchTerm.toLowerCase()));
-        const subjectResults = subjects.filter(subject => subject.name.toLowerCase().includes(searchTerm.toLowerCase()));
+        if (this.state.loading) {
+            return (<div>Loading the results...</div>);
+        }
+
+        const tutorResults = Object.values(this.state.tutors).filter(function (value, index, arr) {
+            return value.id != 1;
+        });;
+        const subjectResults = Object.values(this.state.subjects);
+
+        if (tutorResults[0] == "No existe el profesor" && subjectResults[0] == "No existe el profesor") {
+            return (<div>Your search doesn't match any result</div>);
+        }
 
         const tutorsFound = tutorResults.reduce(function (result, value, index, array) {
             if (index % 2 === 0)
@@ -64,52 +81,60 @@ class ResultPage extends Component {
         return (
             <div className="container search-results">
                 <div className="row container-row">
-                    <div className="col-sm-4 tutors-found-pics">
-                        <h1>Tutors found</h1>
-                        <div className="profile-mashup">
-                            {tutorsFound.slice(0, 2).map(tutorPair => (
-                                <div className="row profile-mashup-row">
-                                    {tutorPair.map(tutor => (
-                                        <img className="profile-mashup-img" src={tutor.profile_pic} alt="" />
-                                    ))}
-                                </div>
-                            ))}
+                    {tutorsFound[0] != "No existe el profesor" &&
+                        <div className="col-sm-4 tutors-found-pics">
+                            <h1>Tutors found</h1>
+                            <div className="profile-mashup">
+                                {tutorsFound.slice(0, 2).map(tutorPair => (
+                                    <div key={tutorPair[0].id} className="row profile-mashup-row">
+                                        {tutorPair.map(tutor => (
+                                            <img key={tutor.id} className="profile-mashup-img" src={tutor.profile_pic} alt="" />
+                                        ))}
+                                    </div>
+                                ))}
+                            </div>
+                            {tutorResults.length > 4 && <Button outline color="info">See all</Button>}
                         </div>
-                        <Button outline color="info">See all</Button>
-                    </div>
-                    <div className="col-sm-8 tutors-found-list">
-                        <ul>
-                            {tutorResults.slice(0, 4).map(tutor => (
-                                <li>
-                                    <Tutor name={tutor.name} subjects={tutor.subjects} url={tutor.url} />
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                    }
+                    {tutorsFound[0] != "No existe el profesor" &&
+                        <div className="col-sm-8 tutors-found-list">
+                            <ul>
+                                {tutorResults.slice(0, 4).map(tutor => (
+                                    <li key={tutor.id}>
+                                        <Tutor name={tutor.name} last_name={tutor.last_name} id={tutor.id} />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    }
                 </div>
                 <div className="row container-row">
-                    <div className="col-sm-4 tutors-found-pics">
-                        <h1>Subjects found</h1>
-                        <div className="profile-mashup">
-                            {subjectsFound.slice(0, 2).map(subjectPair => (
-                                <div className="row profile-mashup-row">
-                                    {subjectPair.map(subject => (
-                                        <img className="profile-mashup-img" src={subject.icon} alt="" />
-                                    ))}
-                                </div>
-                            ))}
+                    {subjectsFound[0] != "No existe el profesor" &&
+                        <div className="col-sm-4 tutors-found-pics">
+                            <h1>Subjects found</h1>
+                            <div className="profile-mashup">
+                                {subjectsFound.slice(0, 2).map(subjectPair => (
+                                    <div key={subjectPair[0].id} className="row profile-mashup-row">
+                                        {subjectPair.map(subject => (
+                                            <img key={subject.id} className="profile-mashup-img" src={subject.icon} alt="" />
+                                        ))}
+                                    </div>
+                                ))}
+                            </div>
+                            {subjectResults.length > 4 && <Button outline color="info">See all</Button>}
                         </div>
-                        <Button outline color="info">See all</Button>
-                    </div>
-                    <div className="col-sm-8 tutors-found-list">
-                        <ul>
-                            {subjectResults.slice(0, 4).map(subject => (
-                                <li>
-                                    <Subject name={subject.name} url={subject.url} />
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                    }
+                    {subjectsFound[0] != "No existe el profesor" &&
+                        <div className="col-sm-8 tutors-found-list">
+                            <ul>
+                                {subjectResults.slice(0, 4).map(subject => (
+                                    <li key={subject.id}>
+                                        <Subject name={subject.name} url={subject.url} />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    }
                 </div>
             </div>
         );
@@ -221,15 +246,15 @@ const subjects = [
 
 const citation = (<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>);
 
-function mapStateToProps(state) {
-    if (state.authentication.user) {
-        const user = state.authentication.user;
-        if (user) {
-            return { user };
-        }
-    }
-    return {};
-}
+// function mapStateToProps(state) {
+//     if (state.authentication.user) {
+//         const user = state.authentication.user;
+//         if (user) {
+//             return { user };
+//         }
+//     }
+//     return {};
+// }
 
-const connectedResultPage = connect(mapStateToProps)(ResultPage);
-export default connectedResultPage;
+// const connectedResultPage = connect(mapStateToProps)(ResultPage);
+export default ResultPage;

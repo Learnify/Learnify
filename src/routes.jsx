@@ -39,6 +39,7 @@ const AppRouters = () => (
       {/* <Route exact path="/Profile" component={Profile} />  */}
       <Route exact path="/Changes" component={Admin} />
       <PrivateRoute exact path='/Profile' component={Profile} />
+      {/* <PrivateRoute exact path='/Results' component={ResultPage} /> */}
       <Route component={Page404} />
     </Switch>
   </App>
