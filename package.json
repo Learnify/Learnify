@@ -9,6 +9,8 @@
     "bootstrap": "^4.3.1",
     "history": "^4.7.2",
     "react": "^16.8.4",
+    "react-chat-widget": "^2.1.4-1",
+    "react-chat-window": "^1.1.1",
     "react-dom": "^16.8.4",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",

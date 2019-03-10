@@ -15,6 +15,13 @@ import "../styles/App.css";
 
 //Redux
 // import index from "../redux/index.js";
+import { connect } from "react-redux";
+
+
+//Chat
+import { Widget, addResponseMessage } from 'react-chat-widget';
+import 'react-chat-widget/lib/styles.css';
+
 
 class App extends Component {
   static propTypes = {
@@ -23,7 +30,8 @@ class App extends Component {
 
   state = {
     redirect: false,
-    searchTerm: ""
+    searchTerm: "",
+    loggedIn: false
   };
 
   handleSearch = e => {
@@ -34,6 +42,19 @@ class App extends Component {
     if (this.state.redirect) {
       this.setState({ redirect: false });
     }
+  }
+
+  handleSession = loggedIn => {
+    this.setState({ loggedIn });
+  };
+
+  handleNewUserMessage = (newMessage) => {
+    console.log(`New message incomig! ${newMessage}`);
+    // Now send the message throught the backend API
+  }
+  
+  componentDidMount() {
+    addResponseMessage("Welcome to this awesome chat!");
   }
 
   render() {
@@ -50,10 +71,23 @@ class App extends Component {
       <div className="App" >
         <NavBar handleSearchResults={this.handleSearch} />
         {content}
+        {this.props.loggedIn &&<Widget 
+          handleNewUserMessage={this.handleNewUserMessage}
+          // profileAvatar={logo}
+          title="My new awesome title"
+          subtitle="And my cool subtitle"
+        />}
         <Footer className="footer" />
       </div>
     );
   }
 }
+function mapStateToProps(state) {
+  const { loggedIn } = state.authentication;
+  return {
+    loggedIn
+  };
+}
 
-export default App;
+const connectedApp =connect(mapStateToProps)(App);
+export default connectedApp;
