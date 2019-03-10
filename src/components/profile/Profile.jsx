@@ -50,7 +50,7 @@ class Profile extends Component {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-img">
-                <img src="https://scontent.fbog6-1.fna.fbcdn.net/v/t1.0-9/31655693_10156536863843394_8634308845482541056_o.jpg?_nc_cat=105&_nc_ht=scontent.fbog6-1.fna&oh=2c169cb07897ca8d28538c085e11187f&oe=5CF86F9D" alt="" />
+                <img src="" alt="" />
               </div>
             </div>
             <div className="col-md-8">
@@ -78,6 +78,7 @@ class Profile extends Component {
                   <li><b>Email:</b><br />{this.state.email}</li>
                   <li><b>Member Since:</b><br />{this.state.created_at}</li>
                   <li><b>Career:</b><br />{this.state.career.name}</li>
+                  <li><b>Role:</b><br />{this.state.role.name}</li>
                 </ul>
               </div>
             </div>

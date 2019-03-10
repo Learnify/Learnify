@@ -40,6 +40,21 @@ const loadRegistrationReducer = () => {
 const loadLoggedIn = () => {
   try {
     const serializedToken = JSON.parse(localStorage.getItem('state')).authentication.loggedIn;
+
+    if (serializedToken === null) {
+      return undefined;
+    }
+    return serializedToken;
+  }
+  catch (err) {
+    return undefined;
+  }
+};
+
+const loadID = () => {
+  try {
+    const serializedToken = JSON.parse(localStorage.getItem('state')).authentication.user.id;
+
     if (serializedToken === null) {
       return undefined;
     }
@@ -76,4 +91,4 @@ const clearLocalStorage = () => {
   localStorage.clear();
 };
 
-export { loadState, saveState, removeState, clearLocalStorage, loadLoggedIn, loadAuthReducer, loadRegistrationReducer };
+export { loadState, saveState, removeState, clearLocalStorage, loadLoggedIn, loadAuthReducer, loadRegistrationReducer, loadID };

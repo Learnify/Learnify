@@ -22,6 +22,7 @@ import ResultPage from "./components/search/ResultPage";
 import AddSubject from "./components/add/add-subject";
 import { PrivateRoute } from "./components/private-route/PrivateRoute";
 import { PublicRoute } from "./components/private-route/PublicRoute";
+import { AdminRoute } from "./components/private-route/AdminRoute";
 
 const AppRouters = () => (
   <App>
@@ -39,12 +40,13 @@ const AppRouters = () => (
       {/* <Route exact path="/Subject" component={Subject} /> */}
       <Route exact path="/" component={Landing} />
       {/* <Route exact path="/Profile" component={Profile} />  */}
-      <Route exact path="/Changes" component={Admin} />
+      {/* <Route exact path="/Changes" component={Admin} /> */}
       <PrivateRoute exact path='/Profile' component={Profile} />
       <PrivateRoute exact path='/Results' component={ResultPage} />
       <PrivateRoute path='/Professor/:id' component={Professor} />
       <PrivateRoute path='/Subject/:id' component={Subject} />
       <PublicRoute exact path='/Invalid' component={Invalid} />
+      <AdminRoute exact path='/Changes' component={Admin} />
       <Route component={Page404} />
     </Switch>
   </App>
