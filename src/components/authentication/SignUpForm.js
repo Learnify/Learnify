@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Input } from "reactstrap";
 import { connect } from "react-redux";
 import { userActions } from "../../redux/actions/user-actions";
+import { userService } from "../../redux/services/user-services";
 
 class SignUpForm extends Component {
   constructor() {
@@ -20,11 +21,17 @@ class SignUpForm extends Component {
       role_id: 2,
       dropdownOpen: false,
       hasAgreed: false,
-      submitted: false
+      passwords_match: true,
+      submitted: false,
+      careers: []
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.getCarreersInfo();
   }
 
   toggle() {
@@ -41,6 +48,15 @@ class SignUpForm extends Component {
     this.setState({
       [name]: value
     });
+
+    if (target.name === "password_confirmation") {
+      if (this.state.password !== value) {
+        this.setState({ passwords_match: false });
+      }
+      else {
+        this.setState({ passwords_match: true });
+      }
+    }
   }
 
   handleSubmit(e) {
@@ -48,7 +64,7 @@ class SignUpForm extends Component {
 
     this.setState({ submitted: true });
 
-    if (!this.state.hasAgreed) {
+    if (!this.state.hasAgreed && this.state.passwords_match) {
       return;
     }
 
@@ -67,6 +83,11 @@ class SignUpForm extends Component {
       };
       dispatch(userActions.register(user));
     }
+  }
+
+  async getCarreersInfo() {
+    const careers = await userService.getCareers();
+    this.setState({ careers });
   }
 
   render() {
@@ -142,6 +163,7 @@ class SignUpForm extends Component {
               value={this.state.password_confirmation}
               onChange={this.handleChange}
             />
+            {!this.state.passwords_match && <p>Passwords don't match</p>}
           </div>
           <div className="FormField career">
             <label className="FormField__Label" htmlFor="career">
@@ -153,11 +175,9 @@ class SignUpForm extends Component {
               onChange={this.handleChange}
               className="btn btn-outline-info career"
             >
-              <option value="1">Engineering</option>
-              <option value="2">Medicine</option>
-              <option value="3">Architecture</option>
-              <option value="4">Music</option>
-              <option value="5">Physics</option>
+              {this.state.careers.length != 0 && this.state.careers.map(
+                career => <option key={career.id} value={career.id}>{career.name}</option>
+              )}
             </select>
           </div>
           <div className="FormField">
@@ -174,7 +194,7 @@ class SignUpForm extends Component {
                 terms of service
               </a>
             </label>
-            {!this.state.hasAgreed && this.state.submitted && <p className="FormField_Label FormField__Alert">You must agree to the terms and conditions first!</p>}
+            {!this.state.hasAgreed && this.state.password !== "" && this.state.submitted && <p className="FormField_Label FormField__Alert">You must agree to the terms and conditions first!</p>}
           </div>
 
           <div className="FormField">

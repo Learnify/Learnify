@@ -1,4 +1,4 @@
-import { authHeader, userHeader} from "../helpers/auth-header";
+import { authHeader, userHeader } from "../helpers/auth-header";
 import {
   authAddress,
   signupAddress,
@@ -7,7 +7,8 @@ import {
   professorAddress,
   professorSubjectAddress,
   professorPublicAddress,
-  subjectIdAddress
+  subjectIdAddress,
+  careerAddress
 } from "../constants/back-address";
 import { removeState } from "../store/localStorage";
 
@@ -23,6 +24,7 @@ export const userService = {
   getProfessorSubjects,
   getProfessorPublicProfile,
   getSubject,
+  getCareers,
   delete: _delete
 };
 
@@ -123,6 +125,15 @@ function getSubject(id) {
     method: "GET",
   };
   return fetch(`${subjectIdAddress}/${id}`, requestOptions).then(handleResponse).then(response => {
+    return response;
+  });
+}
+
+function getCareers() {
+  const requestOptions = {
+    method: "GET",
+  };
+  return fetch(`${careerAddress}`, requestOptions).then(handleResponse).then(response => {
     return response;
   });
 }
