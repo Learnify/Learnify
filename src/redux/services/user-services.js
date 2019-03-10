@@ -1,5 +1,14 @@
 import { authHeader, userHeader, searchHeader } from "../helpers/auth-header";
-import { authAddress, signupAddress, profileAddress, subjectAddress, professorAddress, professorSubjectAddress } from "../constants/back-address";
+import {
+  authAddress,
+  signupAddress,
+  profileAddress,
+  subjectAddress,
+  professorAddress,
+  professorSubjectAddress,
+  professorPublicAddress,
+  subjectIdAddress
+} from "../constants/back-address";
 import { removeState } from "../store/localStorage";
 
 export const userService = {
@@ -12,6 +21,8 @@ export const userService = {
   getSubjects,
   getProfessors,
   getProfessorSubjects,
+  getProfessorPublicProfile,
+  getSubject,
   delete: _delete
 };
 
@@ -88,11 +99,30 @@ function getSubjects(name) {
   });
 }
 
+function getProfessorPublicProfile(id) {
+
+  const requestOptions = {
+    method: "GET",
+  };
+  return fetch(`${professorPublicAddress}/${id}`, requestOptions).then(handleResponse).then(response => {
+    return response;
+  });
+}
+
 function getProfessorSubjects(id) {
   const requestOptions = {
     method: "GET",
   };
   return fetch(`${professorSubjectAddress}/${id}`, requestOptions).then(handleResponse).then(response => {
+    return response;
+  });
+}
+
+function getSubject(id) {
+  const requestOptions = {
+    method: "GET",
+  };
+  return fetch(`${subjectIdAddress}/${id}`, requestOptions).then(handleResponse).then(response => {
     return response;
   });
 }

@@ -28,7 +28,7 @@ class TutorResult extends Component {
     return (
       <div>
         <h4>
-          <Link to="#" className="text-search">{`${this.props.name} ${this.props.last_name}`}</Link>
+          <Link to={`/Professor/${this.props.id}`} params={{ id: this.props.id }} className="text-search">{`${this.props.name} ${this.props.last_name}`}</Link>
         </h4>
         {this.state.subjects.subjectList && this.state.subjects.subjectList.slice(0, 3).map(subject => (
           <p key={subject.id}>{subject.name}</p>

@@ -129,7 +129,7 @@ class ResultPage extends Component {
                             <ul>
                                 {subjectResults.slice(0, 4).map(subject => (
                                     <li key={subject.id}>
-                                        <Subject name={subject.name} url={subject.url} />
+                                        <Subject name={subject.name} id={subject.id} url={subject.url} />
                                     </li>
                                 ))}
                             </ul>

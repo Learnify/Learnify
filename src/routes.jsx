@@ -42,8 +42,8 @@ const AppRouters = () => (
       <Route exact path="/Changes" component={Admin} />
       <PrivateRoute exact path='/Profile' component={Profile} />
       <PrivateRoute exact path='/Results' component={ResultPage} />
-      <PrivateRoute exact path='/Professor' component={Professor} />
-      <PrivateRoute exact path='/Subject' component={Subject} />
+      <PrivateRoute path='/Professor/:id' component={Professor} />
+      <PrivateRoute path='/Subject/:id' component={Subject} />
       <PublicRoute exact path='/Invalid' component={Invalid} />
       <Route component={Page404} />
     </Switch>

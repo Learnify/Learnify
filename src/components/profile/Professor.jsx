@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { extractDate } from "../../utils/date-extractor";
-import { userActions } from "../../redux/actions/user-actions";
 import { userService } from "../../redux/services/user-services";
-import { connect } from "react-redux";
+import SubjectResult from "../search/SubjectResult";
 
 import "./Professor.css";
 
@@ -17,20 +15,31 @@ class Professor extends Component {
       email: "",
       created_at: "",
       career: "",
-      role: ""
+      role: "",
+      id: 0,
+      subjects: []
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getUserData();
+    this.getSubjectsData();
   }
 
   async getUserData() {
+    const user = await userService.getProfessorPublicProfile(this.props.match.params.id);
+    this.setState({
+      ...user
+    });
+  }
+
+  async getSubjectsData() {
+    const subjectList = await userService.getProfessorSubjects(this.props.match.params.id);
+    this.setState({ subjects: subjectList.subjects });
+    console.log(this.state);
   }
 
   render() {
-    const data = [{ "name": "test1" }, { "name": "test2" }];
-    const listItems = data.map((d) => <li key={d.name}>{d.name}</li>);
 
     return (
       <div className="container emp-Professor">
@@ -38,15 +47,15 @@ class Professor extends Component {
           <div className="row">
             <div className="col-md-4">
               <div className="Professor-img">
-                <img src="https://i1.rgstatic.net/ii/profile.image/272496691773460-1441979682657_Q512/Jairo_Aponte.jpg" alt="" />
+                <img src="" alt="" />
               </div>
             </div>
             <div className="col-md-8">
               <div className="Professor-head">
                 <h2>
-                  Jairo Aponte
+                  {`${this.state.name} ${this.state.last_name}`}
                 </h2>
-                <p>Professor of Software Development</p>
+                <p>{this.state.career.name}</p>
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item">
                     <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Current Courses</a>
@@ -58,11 +67,10 @@ class Professor extends Component {
           <div className="row">
             <div className="col-md-4">
               <div className="Professor-work">
-                <h4>Jairo Aponte</h4>
+                <h4>{`${this.state.name} ${this.state.last_name}`}</h4>
                 <ul>
-                  <li><b>Email:</b><br />jhapontem@unal.edu.co</li>
-                  <li><b>Member Since:</b><br />{this.state.created_at}</li>
-                  <li><b>Career:</b><br />{this.state.career.name}</li>
+                  <li><b>Email:</b><br />{this.state.email}</li>
+                  <li><b>Role:</b><br />{this.state.role.name}</li>
                 </ul>
               </div>
             </div>
@@ -70,10 +78,13 @@ class Professor extends Component {
               <div className="tab-content Professor-tab" id="myTabContent">
                 <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div className="row c-tutors">
-                    <li>Advanced Software Engineering</li>
-                    <li>Software Development II</li>
-                    <li>Advanced Software Engineering</li>
-                    <li>Advanced Software Engineering</li>
+                    <ul>
+                      {
+                        this.state.subjects.map(subject => (
+                          <SubjectResult key={subject.id} name={subject.name} id={subject.id} />
+                        ))
+                      }
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -85,15 +96,4 @@ class Professor extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  if (state.authentication.user) {
-    const user = state.authentication.user;
-    if (user) {
-      return { user };
-    }
-  }
-  return {};
-}
-
-const connectedProfessorPage = connect(mapStateToProps)(Professor);
-export default connectedProfessorPage;
+export default Professor;
