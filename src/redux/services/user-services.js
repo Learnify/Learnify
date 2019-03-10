@@ -1,4 +1,4 @@
-import { authHeader, userHeader, searchHeader } from "../helpers/auth-header";
+import { authHeader, userHeader} from "../helpers/auth-header";
 import {
   authAddress,
   signupAddress,
@@ -157,8 +157,8 @@ function register(user) {
         body: JSON.stringify(newUser)
       };
 
-      return fetch(signupAddress, requestOptions).
-        then(handleResponse).then(
+      return fetch(signupAddress, requestOptions)
+        .then(handleResponse).then(
           user_returned => {
 
           }

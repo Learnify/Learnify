@@ -50,7 +50,6 @@ class SignInForm extends Component {
     return (
       <div className="FormCenter">
         <form
-          onSubmit={this.handleSubmit}
           className="FormFields"
           onSubmit={this.handleSubmit}
         >

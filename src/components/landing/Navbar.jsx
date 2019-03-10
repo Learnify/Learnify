@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Label,
-  Button,
-  Input,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  FormGroup
-} from "reactstrap";
+// import {
+//   Collapse,
+//   Navbar,
+//   NavbarToggler,
+//   NavbarBrand,
+//   Nav,
+//   NavItem,
+//   NavLink,
+//   Label,
+//   Button,
+//   Input,
+//   DropdownToggle,
+//   DropdownMenu,
+//   DropdownItem,
+//   FormGroup
+// } from "reactstrap";
 
 import { Link, Redirect, Switch } from "react-router-dom";
 import { connect } from "react-redux";
@@ -99,16 +99,24 @@ class NavBar extends Component {
                 Profile
               </Link>
             </li>}
-            <li className="nav-item">
-              <Link className="nav-link txt-secondary" to={"/Contact"}>
-                Contact
+            {this.props.loggedIn &&
+              <li className="nav-item pr-sm-2">
+                <Link className="nav-link txt-secondary" to={"/chat"}>
+                  Chat
               </Link>
-            </li>
+              </li>
+            }
             <li className="nav-item">
               <Link className="nav-link txt-secondary" to={"/Blog"}>
                 Blog
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link txt-secondary" to={"/Contact"}>
+                Contact
+              </Link>
+            </li>
+
             {!this.props.loggedIn &&
               <li className="nav-item pr-sm-2">
                 <Link

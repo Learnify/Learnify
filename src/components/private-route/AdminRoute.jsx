@@ -4,7 +4,7 @@ import { loadID } from "../../redux/store/localStorage";
 
 export const AdminRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
-    loadID() == 1
+    loadID() === 1
       ? <Component {...props} />
       : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
   )} />

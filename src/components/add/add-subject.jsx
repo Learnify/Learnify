@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Input } from "reactstrap";
+// import { Link } from "react-router-dom";
+// import { Input } from "reactstrap";
 import { connect } from "react-redux";
 import { userActions } from "../../redux/actions/user-actions";
 

@@ -59,11 +59,11 @@ class ResultPage extends Component {
         }
 
         const tutorResults = Object.values(this.state.tutors).filter(function (value, index, arr) {
-            return value.id != 1;
+            return value.id !== 1;
         });;
         const subjectResults = Object.values(this.state.subjects);
 
-        if (tutorResults[0] == "No existe el profesor" && subjectResults[0] == "No existe el profesor") {
+        if (tutorResults[0] === "No existe el profesor" && subjectResults[0] === "No existe el profesor") {
             return (<div>Your search doesn't match any result</div>);
         }
 
@@ -81,7 +81,7 @@ class ResultPage extends Component {
         return (
             <div className="container search-results">
                 <div className="row container-row">
-                    {tutorsFound[0] != "No existe el profesor" &&
+                    {tutorsFound[0] !== "No existe el profesor" &&
                         <div className="col-sm-4 tutors-found-pics">
                             <h1>Tutors found</h1>
                             <div className="profile-mashup">
@@ -96,7 +96,7 @@ class ResultPage extends Component {
                             {tutorResults.length > 4 && <Button outline color="info">See all</Button>}
                         </div>
                     }
-                    {tutorsFound[0] != "No existe el profesor" &&
+                    {tutorsFound[0] !== "No existe el profesor" &&
                         <div className="col-sm-8 tutors-found-list">
                             <ul>
                                 {tutorResults.slice(0, 4).map(tutor => (
@@ -109,7 +109,7 @@ class ResultPage extends Component {
                     }
                 </div>
                 <div className="row container-row">
-                    {subjectsFound[0] != "No existe el profesor" &&
+                    {subjectsFound[0] !== "No existe el profesor" &&
                         <div className="col-sm-4 tutors-found-pics">
                             <h1>Subjects found</h1>
                             <div className="profile-mashup">
@@ -124,7 +124,7 @@ class ResultPage extends Component {
                             {subjectResults.length > 4 && <Button outline color="info">See all</Button>}
                         </div>
                     }
-                    {subjectsFound[0] != "No existe el profesor" &&
+                    {subjectsFound[0] !== "No existe el profesor" &&
                         <div className="col-sm-8 tutors-found-list">
                             <ul>
                                 {subjectResults.slice(0, 4).map(subject => (
