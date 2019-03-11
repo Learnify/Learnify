@@ -1,0 +1,52 @@
+.chatWindow{
+    margin: 1% 1% 1% 1% !important;
+    min-height: 520px;
+    background-color: #1F2833;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px 1px #C5C6C7 !important;
+}
+.chatTitle{
+    min-height: 10%;
+    color:#ffffff;
+    text-align: left;
+}
+.chatTitle h1{
+    padding: 1em 5% 1em 5%;
+    font-size: 16px !important;
+    margin: 0 0 0 0 !important;
+}
+.chatList{
+    padding: 0 0 0 0 !important;
+    border-right: .5px solid #1F2833;
+}
+.chatMessage{
+    padding: 0 0 0 0 !important;
+    border-left: .5px solid #1F2833;
+}
+.chatContent{
+    min-height: 90%;
+    background-color: #ffffff;
+}
+#left{
+    border-bottom-left-radius: 20px;
+}
+#right{
+    border-bottom-right-radius: 20px;
+}
+.chatText{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-top: 1px solid #eeeef1;
+    position: absolute;
+    width: calc(100% - 20px);
+    bottom: 0;
+}
+.composeInput{
+    border: none;
+    background: none;
+    height: 40px;
+    width: 100%;
+    outline: none;
+}

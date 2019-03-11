@@ -52,7 +52,7 @@ class App extends Component {
     console.log(`New message incomig! ${newMessage}`);
     // Now send the message throught the backend API
   }
-  
+
   componentDidMount() {
     addResponseMessage("Welcome to this awesome chat!");
   }
@@ -71,7 +71,7 @@ class App extends Component {
       <div className="App" >
         <NavBar handleSearchResults={this.handleSearch} />
         {content}
-        {this.props.loggedIn &&<Widget 
+        {this.props.loggedIn && <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           // profileAvatar={logo}
           title="My new awesome title"
@@ -89,5 +89,5 @@ function mapStateToProps(state) {
   };
 }
 
-const connectedApp =connect(mapStateToProps)(App);
+const connectedApp = connect(mapStateToProps)(App);
 export default connectedApp;
