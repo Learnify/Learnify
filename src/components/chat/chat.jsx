@@ -18,14 +18,14 @@ class Chat extends Component {
                                 <input type="search" className="conversationSearchInput" placeholder="Search Messages" />
                             </div>
                             <div className="conversationListItem">
-                                <img class="conversationPhoto" src="https://randomuser.me/api/portraits/men/73.jpg" alt="conversation" />
+                                <img className="conversationPhoto" src="https://randomuser.me/api/portraits/men/73.jpg" alt="conversation" />
                                 <div className="conversationInfo">
                                     <h1 className="conversationTitle">some peole</h1>
                                     <p className="conversationSnippet"> Hello world! This is a long message that</p>
                                 </div>
                             </div>
                             <div className="conversationListItem">
-                                <img class="conversationPhoto" src="https://randomuser.me/api/portraits/men/73.jpg" alt="conversation" />
+                                <img className="conversationPhoto" src="https://randomuser.me/api/portraits/men/73.jpg" alt="conversation" />
                                 <div className="conversationInfo">
                                     <h1 className="conversationTitle">some peole</h1>
                                     <p className="conversationSnippet"> Hello world! This is a long message that</p>

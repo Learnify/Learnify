@@ -1,7 +1,7 @@
 //Dependencies
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 
 //Components
 // import Header from "./Global/Header";
@@ -22,6 +22,7 @@ import { connect } from "react-redux";
 import { Widget, addResponseMessage } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 
+const AppWithRouter = withRouter(props => <App {...props} />);
 
 class App extends Component {
   static propTypes = {
@@ -59,6 +60,9 @@ class App extends Component {
 
   render() {
     const { children } = this.props;
+    const { pathname } = this.props.location;
+    console.log(pathname);
+
     let content = <Content body={children} className="content" />;
     if (this.state.redirect) {
       content = <Redirect to="/Results" to={{
@@ -71,7 +75,7 @@ class App extends Component {
       <div className="App" >
         <NavBar handleSearchResults={this.handleSearch} />
         {content}
-        {this.props.loggedIn && <Widget
+        {this.props.loggedIn && pathname != "/chat" && <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           // profileAvatar={logo}
           title="My new awesome title"
@@ -89,5 +93,5 @@ function mapStateToProps(state) {
   };
 }
 
-const connectedApp = connect(mapStateToProps)(App);
+const connectedApp = connect(mapStateToProps)(AppWithRouter);
 export default connectedApp;
