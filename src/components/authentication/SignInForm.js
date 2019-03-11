@@ -46,13 +46,14 @@ class SignInForm extends Component {
     }
   }
 
+  handleResetPassword() {
+    // localStorage.setItem('reset',true);
+  }
+
   render() {
     return (
       <div className="FormCenter">
-        <form
-          className="FormFields"
-          onSubmit={this.handleSubmit}
-        >
+        <form className="FormFields" onSubmit={this.handleSubmit}>
           <div className="FormField">
             <label className="FormField__Label" htmlFor="email">
               E-Mail Address
@@ -89,6 +90,13 @@ class SignInForm extends Component {
               Create an account
             </Link>
           </div>
+          <Link
+            onClick={this.handleResetPassword}
+            to="/Reset"
+            className="FormField__Link"
+          >
+            Forgot your Password?
+          </Link>
         </form>
       </div>
     );

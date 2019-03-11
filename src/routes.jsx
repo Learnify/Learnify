@@ -12,6 +12,7 @@ import Page404 from "./components/Page404";
 import SignInForm from "./components/authentication/SignInForm";
 import SignUpForm from "./components/authentication/SignUpForm";
 import SignUpProf from "./components/authentication/SignUpProf";
+import PasswordReset from "./components/authentication/PasswordReset";
 import Invalid from "./components/authentication/Invalid";
 import ChangePassword from "./components/authentication/ChangePassword";
 import Authentication from "./components/authentication/authentication";
@@ -37,13 +38,14 @@ const AppRouters = () => (
       <Route exact path="/Blog" component={Blog} />
       <Route exact path="/AddSubject" component={AddSubject} />
       <Route exact path="/" component={Landing} />
-      <PrivateRoute exact path='/chat' component={Chat}/>
-      <PrivateRoute exact path='/Profile' component={Profile} />
-      <PrivateRoute exact path='/Results' component={ResultPage} />
-      <PrivateRoute path='/Professor/:id' component={Professor} />
-      <PrivateRoute path='/Subject/:id' component={Subject} />
-      <PublicRoute exact path='/Invalid' component={Invalid} />
-      <AdminRoute exact path='/Changes' component={Admin} />
+      <PrivateRoute exact path="/chat" component={Chat} />
+      <PrivateRoute exact path="/Profile" component={Profile} />
+      <PrivateRoute exact path="/Results" component={ResultPage} />
+      <PrivateRoute path="/Professor/:id" component={Professor} />
+      <PrivateRoute path="/Subject/:id" component={Subject} />
+      <PublicRoute exact path="/Invalid" component={Invalid} />
+      <PublicRoute exact path="/Reset" component={PasswordReset} />
+      <AdminRoute exact path="/Changes" component={Admin} />
       <Route component={Page404} />
     </Switch>
   </App>

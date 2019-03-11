@@ -8,7 +8,8 @@ import {
   professorSubjectAddress,
   professorPublicAddress,
   subjectIdAddress,
-  careerAddress
+  careerAddress,
+  passwordReset
 } from "../constants/back-address";
 import { removeState } from "../store/localStorage";
 
@@ -25,6 +26,7 @@ export const userService = {
   getProfessorPublicProfile,
   getSubject,
   getCareers,
+  resetPassword,
   delete: _delete
 };
 
@@ -63,9 +65,11 @@ function getById(id, token) {
     headers: userHeader(token)
   };
 
-  return fetch(`${profileAddress}/${id}`, requestOptions).then(handleResponse).then(response => {
-    return response;
-  });
+  return fetch(`${profileAddress}/${id}`, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
 }
 
 function getProfessors(name) {
@@ -80,9 +84,11 @@ function getProfessors(name) {
     })
   };
 
-  return fetch(`${professorAddress}`, requestOptionsName).then(handleResponse).then(response => {
-    return response;
-  });
+  return fetch(`${professorAddress}`, requestOptionsName)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
 }
 
 function getSubjects(name) {
@@ -96,51 +102,84 @@ function getSubjects(name) {
     })
   };
 
-  return fetch(`${subjectAddress}`, requestOptions).then(handleResponse).then(response => {
-    return response;
-  });
+  return fetch(`${subjectAddress}`, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
+}
+
+function resetPassword(email) {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      email: `${email}`
+    })
+  };
+  return fetch(passwordReset, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
 }
 
 function getProfessorPublicProfile(id) {
-
   const requestOptions = {
-    method: "GET",
+    method: "GET"
   };
-  return fetch(`${professorPublicAddress}/${id}`, requestOptions).then(handleResponse).then(response => {
-    return response;
-  });
+  return fetch(`${professorPublicAddress}/${id}`, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
 }
 
 function getProfessorSubjects(id) {
   const requestOptions = {
-    method: "GET",
+    method: "GET"
   };
-  return fetch(`${professorSubjectAddress}/${id}`, requestOptions).then(handleResponse).then(response => {
-    return response;
-  });
+  return fetch(`${professorSubjectAddress}/${id}`, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
 }
 
 function getSubject(id) {
   const requestOptions = {
-    method: "GET",
+    method: "GET"
   };
-  return fetch(`${subjectIdAddress}/${id}`, requestOptions).then(handleResponse).then(response => {
-    return response;
-  });
+  return fetch(`${subjectIdAddress}/${id}`, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
 }
 
 function getCareers() {
   const requestOptions = {
-    method: "GET",
+    method: "GET"
   };
-  return fetch(`${careerAddress}`, requestOptions).then(handleResponse).then(response => {
-    return response;
-  });
+  return fetch(`${careerAddress}`, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
 }
 
 function register(user) {
-
-  const { email, password, password_confirmation, firstname, lastname, career_id, role_id } = user;
+  const {
+    email,
+    password,
+    password_confirmation,
+    firstname,
+    lastname,
+    career_id,
+    role_id
+  } = user;
   const newUser = {
     user: {
       name: firstname,
@@ -158,24 +197,20 @@ function register(user) {
     password: "123456789"
   };
 
+  return login(admin.email, admin.password).then(token => {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        Authorization: token.auth_token.toString(),
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newUser)
+    };
 
-  return login(admin.email, admin.password).then(
-    token => {
-
-      const requestOptions = {
-        method: "POST",
-        headers: { "Authorization": token.auth_token.toString(), "Content-Type": "application/json" },
-        body: JSON.stringify(newUser)
-      };
-
-      return fetch(signupAddress, requestOptions)
-        .then(handleResponse).then(
-          user_returned => {
-
-          }
-        );
-    }
-  );
+    return fetch(signupAddress, requestOptions)
+      .then(handleResponse)
+      .then(user_returned => {});
+  });
 }
 
 function update(user) {
