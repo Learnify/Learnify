@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Landing.css";
-//import NavBar from "./Navbar.jsx";
 
 class Landing extends Component {
   render() {
@@ -10,7 +9,7 @@ class Landing extends Component {
           LEARNIFY
         </h1>
         <p className="main" align="center">
-        Welcome to the app that will help you improve all your skills.
+          Welcome to the app that will help you improve all your skills.
         </p>
       </div>
     );
