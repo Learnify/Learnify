@@ -36,7 +36,6 @@ class Professor extends Component {
   async getSubjectsData() {
     const subjectList = await userService.getProfessorSubjects(this.props.match.params.id);
     this.setState({ subjects: subjectList.subjects });
-    console.log(this.state);
   }
 
   render() {

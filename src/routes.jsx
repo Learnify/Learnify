@@ -33,7 +33,6 @@ const AppRouters = () => (
       <Route exact path="/LogIn" component={SignInForm} />
       <Route exact path="/SignIn" component={SignUpForm} />
       <Route exact path="/SignUpProf" component={SignUpProf} />
-      <Route exact path="/ChangePassword" component={ChangePassword} />
       <Route exact path="/Contact" component={Contact} />
       <Route exact path="/Blog" component={Blog} />
       <Route exact path="/AddSubject" component={AddSubject} />
@@ -46,6 +45,7 @@ const AppRouters = () => (
       <PublicRoute exact path="/Invalid" component={Invalid} />
       <PublicRoute exact path="/Reset" component={PasswordReset} />
       <AdminRoute exact path="/Changes" component={Admin} />
+      <Route path="/ChangePassword/:token" component={ChangePassword} />
       <Route component={Page404} />
     </Switch>
   </App>

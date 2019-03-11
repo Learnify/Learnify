@@ -9,7 +9,8 @@ import {
   professorPublicAddress,
   subjectIdAddress,
   careerAddress,
-  passwordReset
+  passwordReset,
+  passwordChange
 } from "../constants/back-address";
 import { removeState } from "../store/localStorage";
 
@@ -27,6 +28,7 @@ export const userService = {
   getSubject,
   getCareers,
   resetPassword,
+  changePassword,
   delete: _delete
 };
 
@@ -126,6 +128,25 @@ function resetPassword(email) {
     });
 }
 
+function changePassword(email, password, token) {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      email: `${email}`,
+      password: `${password}`,
+      token: `${token}`
+    })
+  };
+  return fetch(passwordChange, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
+}
+
 function getProfessorPublicProfile(id) {
   const requestOptions = {
     method: "GET"
@@ -209,7 +230,7 @@ function register(user) {
 
     return fetch(signupAddress, requestOptions)
       .then(handleResponse)
-      .then(user_returned => {});
+      .then(user_returned => { });
   });
 }
 

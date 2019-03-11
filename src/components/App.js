@@ -61,8 +61,6 @@ class App extends Component {
   render() {
     const { children } = this.props;
     const { pathname } = this.props.location;
-    console.log(pathname);
-
     let content = <Content body={children} className="content" />;
     if (this.state.redirect) {
       content = <Redirect to="/Results" to={{
