@@ -39,14 +39,66 @@
     align-items: center;
     background: #ffffff;
     border-top: 1px solid #eeeef1;
+    border-bottom-right-radius: 20px;
     position: absolute;
-    width: calc(100% - 20px);
+    width: 100%;
     bottom: 0;
 }
 .composeInput{
     border: none;
-    background: none;
+    background-color: #ffffff;
     height: 40px;
-    width: 100%;
+    width: 97%;
     outline: none;
+}
+.chatSend{
+    position: absolute;
+    right: 0;
+    outline: none;
+    border: none;
+}
+.icon-paper-plane-empty{
+    background: none;
+}
+.conversationSearch{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.conversationSearchInput{
+    background: #f4f4f8;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+}
+.conversationListItem{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.conversationListItem:hover{
+    background: #eeeef1;
+    cursor: pointer;
+}
+.conversationPhoto{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px;
+}
+.conversationTitle{
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin: 0;
+    text-align: left;
+    color: #0B0C10;
+}
+.conversationSnippet{
+    padding: 0;
+    font-size: 14px;
+    color: #888888;
+    margin: 0;
 }

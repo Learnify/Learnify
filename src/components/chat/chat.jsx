@@ -11,7 +11,16 @@ class Chat extends Component {
                             <h1>Messenger</h1>
                         </div>
                         <div className="chatContent" id="left">
-                            asdfoasdf
+                            <div className="conversationSearch">
+                                <input type="search" className="conversationSearchInput" placeholder="Search Messages"/>
+                            </div>
+                            <div className="conversationListItem">
+                                <img class="conversationPhoto" src="https://randomuser.me/api/portraits/men/73.jpg" alt="conversation"/>
+                                <div className="conversationInfo">
+                                    <h1 className="conversationTitle">some peole</h1>
+                                    <p className="conversationSnippet"> Hello world! This is a long message that</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="col-sm-8 chatMessage">
@@ -23,6 +32,7 @@ class Chat extends Component {
 
                             <div className="chatText">
                                 <input type="text" className="composeInput" placeholder="Type a message"/>
+                                <button type="submit" className="chatSend icon-paper-plane-empty"></button>
                             </div>
                         </div>
                     </div>

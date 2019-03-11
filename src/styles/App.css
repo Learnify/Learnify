@@ -50,3 +50,6 @@ body {
   color: #ffffff !important;
   background-color: #1F2833 !important;
 }
+.rcw-close-button{
+  background: none !important;
+}
