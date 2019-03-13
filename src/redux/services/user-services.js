@@ -176,6 +176,7 @@ function getSubject(id) {
   return fetch(`${subjectIdAddress}/${id}`, requestOptions)
     .then(handleResponse)
     .then(response => {
+      console.log(response);
       return response;
     });
 }
@@ -213,25 +214,19 @@ function register(user) {
     }
   };
 
-  const admin = {
-    email: "admin@example.com.co",
-    password: "123456789"
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(newUser)
   };
 
-  return login(admin.email, admin.password).then(token => {
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        Authorization: token.auth_token.toString(),
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newUser)
-    };
-
-    return fetch(signupAddress, requestOptions)
-      .then(handleResponse)
-      .then(user_returned => { });
-  });
+  return fetch(signupAddress, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response
+    });
 }
 
 function update(user) {

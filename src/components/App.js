@@ -63,8 +63,8 @@ class App extends Component {
     const { pathname } = this.props.location;
     let content = <Content body={children} className="content" />;
     if (this.state.redirect) {
-      content = <Redirect to="/Results" to={{
-        pathname: '/Results',
+      content = <Redirect to={`/Results/${this.state.searchTerm}`} to={{
+        pathname: `/Results/${this.state.searchTerm}`,
         searchTerm: this.state.searchTerm
       }} />
     }

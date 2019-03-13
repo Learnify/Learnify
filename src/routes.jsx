@@ -39,13 +39,13 @@ const AppRouters = () => (
       <Route exact path="/" component={Landing} />
       <PrivateRoute exact path="/chat" component={Chat} />
       <PrivateRoute exact path="/Profile" component={Profile} />
-      <PrivateRoute exact path="/Results" component={ResultPage} />
+      <PrivateRoute path="/Results/:searchTerm" component={ResultPage} />
       <PrivateRoute path="/Professor/:id" component={Professor} />
       <PrivateRoute path="/Subject/:id" component={Subject} />
       <PublicRoute exact path="/Invalid" component={Invalid} />
       <PublicRoute exact path="/Reset" component={PasswordReset} />
+      <PublicRoute path="/ChangePassword/:email/:token" component={ChangePassword} />
       <AdminRoute exact path="/Changes" component={Admin} />
-      <Route path="/ChangePassword/:token" component={ChangePassword} />
       <Route component={Page404} />
     </Switch>
   </App>

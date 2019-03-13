@@ -27,7 +27,8 @@ class ChangePassword extends Component {
 
   componentDidMount() {
     this.setState({
-      token: this.props.match.params.token
+      token: this.props.match.params.token,
+      email: this.props.match.params.email
     });
   }
 
@@ -114,18 +115,9 @@ class ChangePassword extends Component {
           onSubmit={this.handleSubmit}
         >
           <div className="FormField">
-            <label className="FormField__Label" htmlFor="email">
-              E-Mail Address
+            <label htmlFor="email">
+              Reset the password for: {this.state.email}
             </label>
-            <input
-              type="email"
-              id="email"
-              className="FormField__Input"
-              placeholder="Enter your email"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
           </div>
           <div className="FormField">
             <label className="FormField__Label" htmlFor="New">
