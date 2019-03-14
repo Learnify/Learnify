@@ -42,6 +42,7 @@ ul{
 
 .tutors-found-list{
     margin-top: 70px;
+    overflow: scroll;
 }
 
 .tutors-found-pics h1{
@@ -50,6 +51,7 @@ ul{
 }
 
 .search-results{
+    margin-top: 2%;
     margin-bottom: 5%;
     color: #0B0C10 !important;
 }

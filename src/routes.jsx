@@ -18,7 +18,7 @@ import ChangePassword from "./components/authentication/ChangePassword";
 import Authentication from "./components/authentication/authentication";
 import Contact from "./components/contact/contact";
 import Admin from "./components/admin/Changes";
-import Blog from "./components/blog/blog";
+import Articles from "./components/articles/articles";
 import Chat from "./components/chat/chat";
 import ResultPage from "./components/search/ResultPage";
 import AddSubject from "./components/add/add-subject";
@@ -34,7 +34,7 @@ const AppRouters = () => (
       <Route exact path="/SignIn" component={SignUpForm} />
       <Route exact path="/SignUpProf" component={SignUpProf} />
       <Route exact path="/Contact" component={Contact} />
-      <Route exact path="/Blog" component={Blog} />
+      <Route exact path="/Articles" component={Articles} />
       <Route exact path="/AddSubject" component={AddSubject} />
       <Route exact path="/" component={Landing} />
       <PrivateRoute exact path="/chat" component={Chat} />

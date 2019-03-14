@@ -75,13 +75,13 @@ class Profile extends Component {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-img">
-                <img src="" alt="" />
+                <img src="https://i1.wp.com/ialmahue.com/wp-content/uploads/2017/12/profile-img-placeholder.png?fit=210%2C210&ssl=1" alt="" />
               </div>
             </div>
             <div className="col-md-8">
               <div className="profile-head">
                 <h2>{this.state.name}</h2>
-                <p>Male. Bogotá D.C. Colombia</p>
+                {/* <p>Male. Bogotá D.C. Colombia</p> */}
               </div>
             </div>
           </div>

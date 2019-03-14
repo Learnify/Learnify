@@ -99,6 +99,11 @@ class NavBar extends Component {
                 Profile
               </Link>
             </li>}
+            <li className="nav-item">
+              <Link className="nav-link txt-secondary" to={"/Articles"}>
+                Articles
+              </Link>
+            </li>
             {this.props.loggedIn &&
               <li className="nav-item pr-sm-2">
                 <Link className="nav-link txt-secondary" to={"/chat"}>
@@ -106,11 +111,6 @@ class NavBar extends Component {
               </Link>
               </li>
             }
-            <li className="nav-item">
-              <Link className="nav-link txt-secondary" to={"/Blog"}>
-                Blog
-              </Link>
-            </li>
             <li className="nav-item">
               <Link className="nav-link txt-secondary" to={"/Contact"}>
                 Contact

@@ -1,0 +1,49 @@
+.articleContainer{
+    padding: 2%;
+    margin: 5% 10% 5% 10%;
+    border-radius: 0.5rem;
+    background: #fff;
+    color: #000;
+    box-shadow: 0 2px 10px 1px #66FCF1 ;
+
+}
+.articleTitle{
+    color: #45A29E;
+    text-transform: uppercase;
+}
+.articleContent, .articleVisit{
+    margin-top: 2%;
+}
+.articleContent{
+    justify-content: left;
+    text-align: justify;
+}
+.articleContent a{
+    color: #45A29E;
+}
+.articleContent a:hover{
+    color: #66FCF1;
+}
+.articleVisit{
+    padding: 2%;
+    text-align: left;
+    justify-content: left
+}
+.articleVisit button{
+    border-radius: 50%;
+    width: 36px;
+    height: 36px ;
+    background-color: #45A29E;
+    color: #ffffff ;
+    border: none;
+    text-align: center;
+    justify-content: center;
+    outline: none;
+}
+.articleVisit button:hover{
+    background-color: #66FCF1;
+    color: #1F2833;
+}
+.articleFooter{
+
+}
