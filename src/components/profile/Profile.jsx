@@ -54,10 +54,12 @@ class Profile extends Component {
     var content = <p>Loading...</p>;
     if (this.state.role.name == "Profesor") {
       if (this.state.id === 1) {
+        console.log("Admin");
         content = (
           <AdminContent token={this.props.user.auth_token} id={this.state.id} />
         );
       } else {
+        console.log("Profesor");
         content = (
           <ProfessorContent
             token={this.props.user.auth_token}
@@ -66,6 +68,7 @@ class Profile extends Component {
         );
       }
     } else if (this.state.role.name == "Estudiante") {
+      console.log("Estudiante");
       content = <StudentContent id={this.state.id} />;
     }
 

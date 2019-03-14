@@ -32,6 +32,7 @@ export const userService = {
   getAllSubjects,
   addSubject,
   getAllProfessors,
+  createSubject,
   delete: _delete
 };
 
@@ -159,6 +160,26 @@ function addSubject(name, id, token) {
     },
     body: JSON.stringify({
       name: `%${name}%`,
+      user_id: id
+    })
+  };
+  return fetch(subjectIdAddress, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
+}
+
+function createSubject(name, summary, id, token) {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Authorization": `${token}`,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      name: `${name}`,
+      summary: `${summary}`,
       user_id: id
     })
   };

@@ -14,10 +14,12 @@ class AdminContent extends Component {
     subjects: [],
     tutors: [],
     token: "",
-    subjectModalShow: false
+    subjectModalShow: false,
+    tutorModalShow: false
   };
 
   componentDidMount() {
+
     this.getsubjectData();
     this.getTutorsData();
 
@@ -37,25 +39,41 @@ class AdminContent extends Component {
     this.setState({ tutors: tutorList.filter(tutor => tutor.id != 1) });
   }
 
-  showSubjectModal = e => {
-    e.preventDefault();
+  showSubjectModal = () => {
     this.setState({
       subjectModalShow: true
     });
   };
 
   hideSubjectModal = () => {
+    // console.log("Hidden");
     this.setState({
       subjectModalShow: false
     });
   };
 
-  handleAddSubject = subject => {
-    this.addSubject(subject.name, this.props.id, this.props.token);
+  showTutorModal = () => {
+    this.setState({
+      tutorModalShow: true
+    });
   };
 
-  async addSubject(name, id, token) {
-    const response = await userService.addSubject(name, id, token);
+  hideTutorModal = () => {
+    this.setState({
+      tutorModalShow: false
+    });
+  };
+
+  handleAddSubject = subject => {
+    this.addSubject(subject, this.props.token);
+  };
+
+  async addSubject(subject, token) {
+    const response = await userService.createSubject(subject.name, subject.summary, subject.user_id, this.props.token);
+    if (response.id) {
+      this.getsubjectData();
+      const asociate = await userService.addSubject(subject.name, subject.user_id, token);
+    }
   }
 
   render() {
@@ -117,6 +135,8 @@ class AdminContent extends Component {
               show={this.state.subjectModalShow}
               onHide={this.hideSubjectModal}
               addsubject={this.addSubject}
+              tutors={this.state.tutors}
+              onSubmit={this.handleAddSubject}
             />
             <Button variant="light" onClick={this.showSubjectModal}>
               (+) Add more
@@ -140,17 +160,17 @@ class AdminContent extends Component {
               this.state.tutors.map(tutor => (
                 <Row key={tutor.id} className="show-grid">
                   <Col xs={10}>
-                    <Link to={`/Subject/${tutor.id}`}>{tutor.name}</Link>
+                    <Link to={`/Professor/${tutor.id}`}>{tutor.name}</Link>
                   </Col>
                   <Col xs={2}>{tutor.id}</Col>
                 </Row>
               ))}
             <AddProfessorModal
-              show={this.state.subjectModalShow}
-              onHide={this.hideModal}
+              show={this.state.tutorModalShow}
+              onHide={this.hideTutorModal}
               addsubject={this.addSubject}
             />
-            <Button variant="light" onClick={this.showModal}>
+            <Button variant="light" onClick={this.showSubjectModal}>
               (+) Add more
             </Button>
           </div>

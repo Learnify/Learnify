@@ -15,7 +15,11 @@ class AddSubjectModal extends Component {
     this.state = {
       subjects: [],
       subjectSearch: [],
-      searchTerm: ""
+      searchTerm: "",
+      selectedTutor: "",
+      name: "",
+      description: "",
+      submitted: false
     };
   }
 
@@ -43,8 +47,6 @@ class AddSubjectModal extends Component {
     this.setState({
       searchTerm: e.target.value
     });
-
-    this.getSubjectData(e.target.value);
   };
 
   getSubjectData(term) {
@@ -58,14 +60,51 @@ class AddSubjectModal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("Submitted!");
+
+    this.setState({
+      submitted: true
+    });
+
+    if (this.state.name == "" || this.state.description == "" || this.state.selectedTutor == "") {
+      return;
+    }
+
+    const subject = {
+      name: this.state.name,
+      summary: this.state.description,
+      user_id: this.state.selectedTutor.id
+    };
+
+    this.props.onSubmit(subject);
+    this.props.onHide();
   };
 
   addSubject = subject => {
     this.props.addsubject(subject);
   };
 
+  setTutor(tutor) {
+    this.setState({
+      selectedTutor: tutor
+    });
+  }
+
+  updateDescription = e => {
+    this.setState({
+      description: e.target.value
+    });
+  };
+
+  updateName = e => {
+    this.setState({
+      name: e.target.value
+    });
+  };
+
   render() {
+
+    const tutors = this.props.tutors.filter(tutor => tutor.name.includes(this.state.searchTerm));
+
     return (
       <Modal
         show={this.props.show}
@@ -80,21 +119,49 @@ class AddSubjectModal extends Component {
         </Modal.Header>
         <Modal.Body>
           <Container>
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.props.handleSubmit}>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Subject Name</Form.Label>
-                <Form.Control type="textarea" />
+                <Form.Control type="textarea" onChange={this.updateName} />
+                {this.state.submitted && this.state.name == "" && <code>Name cannot be empty</code>}
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Subject Description</Form.Label>
-                <Form.Control as="textarea" rows="3" />
+                <Form.Control as="textarea" rows="3" onChange={this.updateDescription} />
+                {this.state.submitted && this.state.description == "" && <code>Description cannot be empty</code>}
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Professor ID</Form.Label>
-                <Form.Control type="textarea" />
+                <Form.Label>Choose a Professor</Form.Label>
+                <Row>
+                  <Col sm={4}>
+                    <input
+                      className="form-control mr-sm-2"
+                      type="search"
+                      placeholder="Search"
+                      aria-label="Search"
+                      id="search-input"
+                      onChange={this.updateSearchTerm}
+                    />
+                  </Col>
+                  <Col sm={1}>
+                  </Col>
+                  <Col sm={7}>
+                    {tutors.map(tutor => (
+                      <Form.Check
+                        type="radio"
+                        label={`${tutor.name} ${tutor.last_name}`}
+                        name="formHorizontalRadios"
+                        id={tutor.id}
+                        key={tutor.id}
+                        onChange={() => this.setTutor(tutor)}
+                      />
+                    ))}
+                  </Col>
+                </Row>
+                {this.state.submitted && this.state.selectedTutor == "" && <code>You have to chose one tutor</code>}
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" onClick={this.handleSubmit}>
                   Submit
                 </Button>
               </Form.Group>
