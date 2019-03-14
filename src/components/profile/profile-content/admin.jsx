@@ -80,7 +80,7 @@ class AdminContent extends Component {
     return (
       <div className="col-md-8">
         <ul className="nav nav-tabs" id="myTab" role="tablist">
-          <li className="nav-item col-md-4">
+          <li className="nav-item col-md-6">
             <a
               className="nav-link active"
               id="home-tab"
@@ -93,7 +93,7 @@ class AdminContent extends Component {
               Current Subjects
             </a>
           </li>
-          <li className="nav-item col-md-4">
+          <li className="nav-item col-md-6">
             <a
               className="nav-link"
               id="profile-tab"
@@ -106,7 +106,7 @@ class AdminContent extends Component {
               Current Tutors
             </a>
           </li>
-          <li className="nav-item col-md-4">
+          {/* <li className="nav-item col-md-4">
             <a
               className="nav-link"
               id="profile-tab"
@@ -117,8 +117,8 @@ class AdminContent extends Component {
               aria-selected="false"
             >
               Current Careers
-            </a>
-          </li>
+            </a> */}
+          {/* </li> */}
         </ul>
         <div className="tab-content profile-tab" id="myTabContent">
           <div

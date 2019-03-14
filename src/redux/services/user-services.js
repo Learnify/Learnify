@@ -10,7 +10,8 @@ import {
   subjectIdAddress,
   careerAddress,
   passwordReset,
-  passwordChange
+  passwordChange,
+  articlesAddress
 } from "../constants/back-address";
 import { removeState } from "../store/localStorage";
 
@@ -33,6 +34,7 @@ export const userService = {
   addSubject,
   getAllProfessors,
   createSubject,
+  getAllArticles,
   delete: _delete
 };
 
@@ -229,6 +231,17 @@ function getAllSubjects() {
     method: "GET"
   };
   return fetch(`${subjectIdAddress}`, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
+}
+
+function getAllArticles() {
+  const requestOptions = {
+    method: "GET"
+  };
+  return fetch(`${articlesAddress}`, requestOptions)
     .then(handleResponse)
     .then(response => {
       return response;

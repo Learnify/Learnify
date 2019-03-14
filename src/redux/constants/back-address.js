@@ -11,3 +11,4 @@ export const subjectIdAddress = backBaseAddress + "/subjects";
 export const careerAddress = backBaseAddress + "/careers";
 export const passwordReset = backBaseAddress + "/passwords/forgot";
 export const passwordChange = backBaseAddress + "/passwords/reset";
+export const articlesAddress = backBaseAddress + "/articles";

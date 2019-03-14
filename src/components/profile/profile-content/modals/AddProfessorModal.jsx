@@ -74,7 +74,27 @@ class AddProfessorModal extends Component {
     if (!this.state.passwords_match || this.state.firstname == "" || this.state.lastname == "" || this.state.email == "") {
       return;
     }
+
+    this.submit(); 
   };
+
+  async submit(){
+    const {firstname, lastname, email, password, password_confirmation, role_id, career_id} = this.state;
+    const user = {
+      firstname,
+      lastname,
+      email,
+      password,
+      password_confirmation,
+      role_id,
+      career_id
+    };
+    const response = await userService.register(user);
+
+    if(response.id){
+      this.handleClose();
+    }
+  }
 
   handleChange = e => {
     let target = e.target;
