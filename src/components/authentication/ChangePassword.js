@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Redirect } from 'react-router'
+import { Redirect } from "react-router";
 
 import { userService } from "../../redux/services/user-services";
 
@@ -49,7 +49,10 @@ class ChangePassword extends Component {
       submitted: true
     });
 
-    if (this.state.email === "" || this.state.password !== this.state.password_confirmation) {
+    if (
+      this.state.email === "" ||
+      this.state.password !== this.state.password_confirmation
+    ) {
       return;
     }
 
@@ -57,11 +60,16 @@ class ChangePassword extends Component {
   }
 
   async handlePasswordChange() {
-    const response = await userService.changePassword(this.state.email, this.state.password, this.state.token);
+    const response = await userService.changePassword(
+      this.state.email,
+      this.state.password,
+      this.state.token
+    );
 
     console.log(response);
 
-    const success = response.status === "ok" ? true : false;
+    const success = response.status ? true : false;
+
     this.setState({
       sent: true,
       successful: success
@@ -69,7 +77,6 @@ class ChangePassword extends Component {
   }
 
   render() {
-
     if (this.state.sent) {
       if (this.state.successful) {
         return (
@@ -78,27 +85,20 @@ class ChangePassword extends Component {
               <label className="FormField__Label" htmlFor="email">
                 Password recovered successfully!
               </label>
-              <Link
-                to="/Login"
-                className="FormField__Link"
-              >
+              <Link to="/Login" className="FormField__Link">
                 Login
               </Link>
             </div>
           </div>
         );
-      }
-      else {
+      } else {
         return (
           <div className="FormCenter">
             <div className="FormField">
               <label className="FormField__Label" htmlFor="email">
-                Email not found
+                Error trying to recover password
               </label>
-              <Link
-                to="/"
-                className="FormField__Link"
-              >
+              <Link to="/" className="FormField__Link">
                 Return to homepage
               </Link>
             </div>
@@ -148,8 +148,11 @@ class ChangePassword extends Component {
               onChange={this.handleChange}
             />
           </div>
-          {this.state.email === "" && this.state.submitted && <p>Email field cannot be empty</p>}
-          {this.state.password !== this.state.password_confirmation && this.state.submitted && <p>Passwords don't match</p>}
+          {this.state.email === "" && this.state.submitted && (
+            <p>Email field cannot be empty</p>
+          )}
+          {this.state.password !== this.state.password_confirmation &&
+            this.state.submitted && <p>Passwords don't match</p>}
 
           <div className="FormField">
             <button className="FormField__Button mr-20">Change Password</button>{" "}
@@ -159,7 +162,6 @@ class ChangePassword extends Component {
     );
   }
 }
-
 
 function mapStateToProps(state) {
   const { loggingIn } = state.authentication;

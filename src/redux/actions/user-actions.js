@@ -17,6 +17,7 @@ function login(email, password) {
 
     userService.login(email, password).then(
       response => {
+        console.log(response);
         const user = {
           auth_token: response.auth_token,
           id: response.user.id
@@ -25,6 +26,7 @@ function login(email, password) {
         history.push("/Profile");
       },
       error => {
+        console.log(error);
         history.push("/Invalid");
         dispatch(failure(error));
         dispatch(alertActions.error(error));

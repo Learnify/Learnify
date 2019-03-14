@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { userService } from "../../../../redux/services/user-services";
 
 import Modal from "react-bootstrap/Modal";
@@ -8,7 +8,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 class SubjectModal extends Component {
-
   constructor() {
     super();
 
@@ -22,8 +21,7 @@ class SubjectModal extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.show) {
       this.initSubjects();
-    }
-    else {
+    } else {
       this.setState({
         subjects: [],
         searchTerm: "",
@@ -49,8 +47,9 @@ class SubjectModal extends Component {
   };
 
   getSubjectData(term) {
-
-    var subjects = this.state.subjects.filter(subject => subject.name.includes(term));
+    var subjects = this.state.subjects.filter(subject =>
+      subject.name.includes(term)
+    );
     this.setState({
       subjectSearch: subjects
     });
@@ -62,10 +61,15 @@ class SubjectModal extends Component {
 
   render() {
     return (
-      <Modal show={this.props.show} onHide={this.props.onHide} size="lg" aria-labelledby="contained-modal-title-vcenter">
+      <Modal
+        show={this.props.show}
+        onHide={this.props.onHide}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+      >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Using Grid in Modal
+            Add a new Subject to your profile
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -104,29 +108,38 @@ class SubjectModal extends Component {
                 <code>ID</code>
               </Col>
               <Col xs={3}>
-                <code></code>
+                <code />
               </Col>
             </Row>
-            {this.state.subjectSearch.length === 0 && <code>No results found</code>}
-            {this.state.subjectSearch.length != 0 && this.state.subjectSearch.map(subject => (
-              <Row key={subject.id} className="show-grid">
-                <Col xs={7}>
-                  <p>{subject.name}</p>
-                </Col>
-                <Col xs={3}>
-                  <p>{subject.id}</p>
-                </Col>
-                <Col xs={2}>
-                  <Button onClick={() => { this.addSubject(subject) }}>Add</Button>
-                </Col>
-              </Row>
-            ))}
+            {this.state.subjectSearch.length === 0 && (
+              <code>No results found</code>
+            )}
+            {this.state.subjectSearch.length != 0 &&
+              this.state.subjectSearch.map(subject => (
+                <Row key={subject.id} className="show-grid">
+                  <Col xs={7}>
+                    <p>{subject.name}</p>
+                  </Col>
+                  <Col xs={3}>
+                    <p>{subject.id}</p>
+                  </Col>
+                  <Col xs={2}>
+                    <Button
+                      onClick={() => {
+                        this.addSubject(subject);
+                      }}
+                    >
+                      Add
+                    </Button>
+                  </Col>
+                </Row>
+              ))}
           </Container>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.onHide}>Close</Button>
         </Modal.Footer>
-      </Modal >
+      </Modal>
     );
   }
 }

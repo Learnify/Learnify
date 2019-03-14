@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { extractDate } from "../../utils/date-extractor";
 import { userActions } from "../../redux/actions/user-actions";
 import { userService } from "../../redux/services/user-services";
 import StudentContent from "./profile-content/student";
 import ProfessorContent from "./profile-content/professor";
+import AdminContent from "./profile-content/admin";
 import { connect } from "react-redux";
 
 import "./Profile.css";
 
 class Profile extends Component {
-
   constructor() {
     super();
 
@@ -30,7 +30,10 @@ class Profile extends Component {
   }
 
   async getUserData() {
-    const user = await userService.getById(this.props.user.id, this.props.user.auth_token);
+    const user = await userService.getById(
+      this.props.user.id,
+      this.props.user.auth_token
+    );
     this.setUserData(user);
   }
 
@@ -48,13 +51,22 @@ class Profile extends Component {
   }
 
   render() {
-
-    var content = (<p>Loading...</p>);
+    var content = <p>Loading...</p>;
     if (this.state.role.name == "Profesor") {
-      content = <ProfessorContent token={this.props.user.auth_token} id={this.state.id} />
-    }
-    else if (this.state.role.name == "Estudiante") {
-      content = <StudentContent id={this.state.id} />
+      if (this.state.id === 1) {
+        content = (
+          <AdminContent token={this.props.user.auth_token} id={this.state.id} />
+        );
+      } else {
+        content = (
+          <ProfessorContent
+            token={this.props.user.auth_token}
+            id={this.state.id}
+          />
+        );
+      }
+    } else if (this.state.role.name == "Estudiante") {
+      content = <StudentContent id={this.state.id} />;
     }
 
     return (
@@ -68,9 +80,7 @@ class Profile extends Component {
             </div>
             <div className="col-md-8">
               <div className="profile-head">
-                <h2>
-                  {this.state.name}
-                </h2>
+                <h2>{this.state.name}</h2>
                 <p>Male. Bogotá D.C. Colombia</p>
               </div>
             </div>
@@ -80,10 +90,26 @@ class Profile extends Component {
               <div className="profile-work">
                 <h4>{this.state.name}</h4>
                 <ul>
-                  <li><b>Email:</b><br />{this.state.email}</li>
-                  <li><b>Member Since:</b><br />{this.state.created_at}</li>
-                  <li><b>Career:</b><br />{this.state.career.name}</li>
-                  <li><b>Role:</b><br />{this.state.role.name}</li>
+                  <li>
+                    <b>Email:</b>
+                    <br />
+                    {this.state.email}
+                  </li>
+                  <li>
+                    <b>Member Since:</b>
+                    <br />
+                    {this.state.created_at}
+                  </li>
+                  <li>
+                    <b>Career:</b>
+                    <br />
+                    {this.state.career.name}
+                  </li>
+                  <li>
+                    <b>Role:</b>
+                    <br />
+                    {this.state.role.name}
+                  </li>
                 </ul>
               </div>
             </div>

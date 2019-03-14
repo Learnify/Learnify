@@ -28,7 +28,7 @@ class PasswordReset extends Component {
   async handleSubmit(e) {
     e.preventDefault();
     const result = await userService.resetPassword(this.state.email);
-    if (result.status === "ok") {
+    if (result.status) {
       this.setState({ submitted: true });
     }
   }
@@ -43,6 +43,7 @@ class PasswordReset extends Component {
               password
             </label>
             <p>Hurry up! The link will expire in 4 hours</p>
+            <Link to={"/"}>Home</Link>
           </div>
         </div>
       );
