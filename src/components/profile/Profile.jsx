@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { extractDate } from "../../utils/date-extractor";
 import { userActions } from "../../redux/actions/user-actions";
 import { userService } from "../../redux/services/user-services";
+import StudentContent from "./profile-content/student";
+import ProfessorContent from "./profile-content/professor";
 import { connect } from "react-redux";
 
 import "./Profile.css";
@@ -17,6 +19,7 @@ class Profile extends Component {
       email: "",
       created_at: "",
       career: "",
+      id: "",
       role: ""
     };
   }
@@ -39,11 +42,21 @@ class Profile extends Component {
       email: user.email,
       created_at: joinedDate,
       career: user.career,
-      role: user.role
+      role: user.role,
+      id: this.props.user.id
     });
   }
 
   render() {
+
+    var content = (<p>Loading...</p>);
+    if (this.state.role.name == "Profesor") {
+      content = <ProfessorContent token={this.props.user.auth_token} id={this.state.id} />
+    }
+    else if (this.state.role.name == "Estudiante") {
+      content = <StudentContent id={this.state.id} />
+    }
+
     return (
       <div className="container emp-profile">
         <form method="post">
@@ -59,14 +72,6 @@ class Profile extends Component {
                   {this.state.name}
                 </h2>
                 <p>Male. Bogotá D.C. Colombia</p>
-                <ul className="nav nav-tabs" id="myTab" role="tablist">
-                  <li className="nav-item col-md-6">
-                    <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Current Tutors</a>
-                  </li>
-                  <li className="nav-item col-md-6">
-                    <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Upcoming Sessions</a>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
@@ -82,62 +87,7 @@ class Profile extends Component {
                 </ul>
               </div>
             </div>
-            <div className="col-md-8">
-              <div className="tab-content profile-tab" id="myTabContent">
-                <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <div className="row c-tutors">
-                    <div className="col-md-6">
-                      <label>Name Tutor<br />Class Name</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>Jairo Aponte<br />Advanced Software Engineering</p>
-                    </div>
-                  </div>
-                  <div className="row c-tutors">
-                    <div className="col-md-6">
-                      <label>Name Tutor<br />Class Name</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>Felipe Restrepo<br />Programing Languajes</p>
-                    </div>
-                  </div>
-                  <div className="row c-tutors">
-                    <div className="col-md-6">
-                      <label>Name Tutor<br />Class Name</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>Helga Duarte<br />Information Systems</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  <div className="row u-sessions">
-                    <div className="col-md-6">
-                      <label>Jairo Aponte</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>Rest API's</p>
-                    </div>
-                  </div>
-                  <div className="row u-sessions">
-                    <div className="col-md-6">
-                      <label>Jairo Aponte</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>Branching in GitHub</p>
-                    </div>
-                  </div>
-                  <div className="row u-sessions">
-                    <div className="col-md-6">
-                      <label>Jairo Aponte</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>AST Syntax</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {content}
           </div>
         </form>
       </div>

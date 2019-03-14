@@ -29,6 +29,8 @@ export const userService = {
   getCareers,
   resetPassword,
   changePassword,
+  getAllSubjects,
+  addSubject,
   delete: _delete
 };
 
@@ -147,6 +149,25 @@ function changePassword(email, password, token) {
     });
 }
 
+function addSubject(name, id, token) {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Authorization": `${token}`,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      name: `%${name}%`,
+      user_id: id
+    })
+  };
+  return fetch(subjectIdAddress, requestOptions)
+    .then(handleResponse)
+    .then(response => {
+      return response;
+    });
+}
+
 function getProfessorPublicProfile(id) {
   const requestOptions = {
     method: "GET"
@@ -177,6 +198,17 @@ function getSubject(id) {
     .then(handleResponse)
     .then(response => {
       console.log(response);
+      return response;
+    });
+}
+
+function getAllSubjects() {
+  const requestOptions = {
+    method: "GET"
+  };
+  return fetch(`${subjectIdAddress}`, requestOptions)
+    .then(handleResponse)
+    .then(response => {
       return response;
     });
 }
