@@ -80,7 +80,7 @@ class AdminContent extends Component {
     return (
       <div className="col-md-8">
         <ul className="nav nav-tabs" id="myTab" role="tablist">
-          <li className="nav-item col-md-6">
+          <li className="nav-item col-md-4">
             <a
               className="nav-link active"
               id="home-tab"
@@ -93,7 +93,7 @@ class AdminContent extends Component {
               Current Subjects
             </a>
           </li>
-          <li className="nav-item col-md-6">
+          <li className="nav-item col-md-4">
             <a
               className="nav-link"
               id="profile-tab"
@@ -104,6 +104,19 @@ class AdminContent extends Component {
               aria-selected="false"
             >
               Current Tutors
+            </a>
+          </li>
+          <li className="nav-item col-md-4">
+            <a
+              className="nav-link"
+              id="profile-tab"
+              data-toggle="tab"
+              href="#profile"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+            >
+              Current Careers
             </a>
           </li>
         </ul>
@@ -170,7 +183,39 @@ class AdminContent extends Component {
               onHide={this.hideTutorModal}
               addsubject={this.addSubject}
             />
-            <Button variant="light" onClick={this.showSubjectModal}>
+            <Button variant="light" onClick={this.showTutorModal}>
+              (+) Add more
+            </Button>
+          </div>
+          <div
+            className="tab-pane fade"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <Row className="show-grid">
+              <Col xs={10}>
+                <code>Name</code>
+              </Col>
+              <Col xs={2}>
+                <code>ID</code>
+              </Col>
+            </Row>
+            {this.state.tutors.length != 0 &&
+              this.state.tutors.map(tutor => (
+                <Row key={tutor.id} className="show-grid">
+                  <Col xs={10}>
+                    <Link to={`/Professor/${tutor.id}`}>{tutor.name}</Link>
+                  </Col>
+                  <Col xs={2}>{tutor.id}</Col>
+                </Row>
+              ))}
+            <AddProfessorModal
+              show={this.state.tutorModalShow}
+              onHide={this.hideTutorModal}
+              addsubject={this.addSubject}
+            />
+            <Button variant="light" onClick={this.showTutorModal}>
               (+) Add more
             </Button>
           </div>

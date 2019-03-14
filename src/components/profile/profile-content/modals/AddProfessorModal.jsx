@@ -13,15 +13,24 @@ class AddProfessorModal extends Component {
     super();
 
     this.state = {
-      subjects: [],
-      subjectSearch: [],
-      searchTerm: ""
+      email: "",
+      password: "",
+      password_confirmation: "",
+      firstname: "",
+      lastname: "",
+      career_id: 1,
+      role_id: 1,
+      careers: [],
+      dropdownOpen: false,
+      hasAgreed: false,
+      submitted: false
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.show) {
       this.initSubjects();
+      this.getCarreersInfo();
     } else {
       this.setState({
         subjects: [],
@@ -58,12 +67,58 @@ class AddProfessorModal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("Submitted!");
+
+    this.setState({
+      submitted: true
+    });
+    if (!this.state.passwords_match || this.state.firstname == "" || this.state.lastname == "" || this.state.email == "") {
+      return;
+    }
   };
 
-  addSubject = subject => {
-    this.props.addsubject(subject);
+  handleChange = e => {
+    let target = e.target;
+    // let value = target.type == "change" ? target.checked : target.value;
+    let value = target.value;
+    let name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+
+    console.log(e.target.name);
+
+    if (target.name === "password_confirmation") {
+      if (this.state.password !== value) {
+        this.setState({ passwords_match: false });
+      }
+      else {
+        this.setState({ passwords_match: true });
+      }
+    }
   };
+
+  handleClose = () => {
+    this.setState({
+      email: "",
+      password: "",
+      password_confirmation: "",
+      firstname: "",
+      lastname: "",
+      career_id: 1,
+      role_id: 1,
+      careers: [],
+      dropdownOpen: false,
+      hasAgreed: false,
+      submitted: false
+    });
+    this.props.onHide();
+  }
+
+  async getCarreersInfo() {
+    const careers = await userService.getCareers();
+    this.setState({ careers });
+  }
 
   render() {
     return (
@@ -75,26 +130,46 @@ class AddProfessorModal extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Add a Subject
+            Add a Professor
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Container>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Subject Name</Form.Label>
-                <Form.Control type="textarea" />
+                <Form.Label>Professor Name</Form.Label>
+                <Form.Control type="textarea" name="firstname" value={this.state.firstname} onChange={this.handleChange} />
+              </Form.Group>
+              {this.state.submitted && this.state.name == "" && <code>Name cannot be empty</code>}
+              <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Professor Last Name</Form.Label>
+                <Form.Control type="textarea" name="lastname" value={this.state.lastname} onChange={this.handleChange} />
+              </Form.Group>
+              {this.state.submitted && this.state.last_name == "" && <code>Last name cannot be empty</code>}
+              <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="textarea" name="email" value={this.state.email} onChange={this.handleChange} />
+              </Form.Group>
+              {this.state.submitted && this.state.email == "" && <code>Email cannot be empty</code>}
+              <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Password Confirmation</Form.Label>
+                <Form.Control type="password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleChange} />
+              </Form.Group>
+              {this.state.submitted && !this.state.passwords_match && <code>Passwords don't match</code>}
+              <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label>Career</Form.Label>
+                <Form.Control as="select" name="career_id" onChange={this.handleChange}>
+                  {this.state.careers.length != 0 && this.state.careers.map(career =>
+                    <option key={career.id} value={career.id}>{career.name}</option>
+                  )}
+                </Form.Control>
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Subject Description</Form.Label>
-                <Form.Control as="textarea" rows="3" />
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Professor ID</Form.Label>
-                <Form.Control type="textarea" />
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" onClick={this.handleSubmit}>
                   Submit
                 </Button>
               </Form.Group>
@@ -102,7 +177,7 @@ class AddProfessorModal extends Component {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.onHide}>Close</Button>
+          <Button onClick={this.handleClose}>Close</Button>
         </Modal.Footer>
       </Modal>
     );
